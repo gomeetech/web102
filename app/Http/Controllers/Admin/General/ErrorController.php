@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Controllers\Admin\General;
+
+use App\Http\Controllers\Admin\AdminController;
+
+
+class ErrorController extends AdminController
+{
+    protected $module = 'errors';
+
+    protected $moduleName = 'Errors';
+    
+    
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->repositoy = null;
+    }
+
+}

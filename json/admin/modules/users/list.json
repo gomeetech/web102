@@ -1,0 +1,105 @@
+{
+    "name": "Người dùng",
+    "package": "users",
+    "use_trash": true,
+    "titles": {
+        "default": "Danh sách người dùng",
+        "trash": "Danh sách người dùng đã xóa"
+    },
+    "data": {
+        "types": {
+            "user": "Người người phổ thông",
+            "customer": "Khách hàng",
+            "shopowner": "Chủ web / shop",
+            "admin": "Người quản trị hệ thông"
+        },
+        "status_list": {
+            "1": "Kích hoạt",
+            "0": "Chờ xác minh",
+            "-1": "Bị khóa"
+        },
+        "levels": {
+            "0": ""
+        }
+    },
+    "filter": {
+        "general_columns": {
+            "name": "Họ Tên",
+            "email": "Email"
+        },
+        "search_columns": {
+            "username": "Username"
+        },
+        "sort_columns": {
+            "birthday": "Sinh nhật",
+            "created_at": "Thời gian khổi tạo"
+        }
+    },
+    "table": {
+        "class": "",
+        "columns": [
+            {
+                "title": "ID",
+                "class": "max-80 text-center",
+                "text": ":id"
+            },
+            {
+                "title": "Avatar",
+                "class": "",
+                "template": "<a href=\"{@route}\"><img src=\"{@getAvatar}\" class=\"image-thumbnail\" alt=\"{name}\"></a>",
+                "data": {
+                    "@route": [
+                        ".update",
+                        {
+                            "id": ":id"
+                        }
+                    ],
+                    "@getAvatar": []
+                }
+            },
+            {
+                "title": "Họ ten",
+                "class": "min-120",
+                "template": "<a href=\"{@route}\">{name}</a>",
+                    "data": {
+                        "@route": [
+                            ".update",
+                            {
+                                "id": ":id"
+                            }
+                        ]
+                    }
+            },
+            {
+                "title": "Email",
+                "class": "min-150",
+                "text": ":email"
+            },
+            {
+                "title": "Loại User",
+                "class": "text-center",
+                "data_access": "status_list.{type}"
+            },
+            {
+                "title": "Số ĐT",
+                "class": "min-120 text-center",
+                "text": ":phone_number"
+            },
+            {
+                "title": "Level",
+                "class": "",
+                "text": ":level"
+            },
+            {
+                "title": "Trạng thái",
+                "class": "min-100",
+                "data_access": "status_list.{status}"
+            }
+        ]
+    },
+    "resources": {
+        "js_data": [],
+        "js": [],
+        "css": []
+    }
+}
