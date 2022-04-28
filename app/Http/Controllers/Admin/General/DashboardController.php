@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\General;
 
 use App\Http\Controllers\Admin\AdminController;
-
+use Gomee\Core\System;
 use Illuminate\Http\Request;
 use Gomee\Helpers\Arr;
 use Gomee\Laravel\Router;
@@ -14,8 +14,8 @@ class DashboardController extends AdminController
     protected $module = 'dashboard';
     protected $moduleBlade = 'dashboard';
     protected $moduleName = 'Dashboard';
-    
-    
+
+
 
     /**
      * Create a new controller instance.
@@ -33,18 +33,19 @@ class DashboardController extends AdminController
     {
         // $file = $this->getFilemanager(json_path('admin/forms'));
         // $file->convertJsonToPhp('products.attributes', base_path('products.attributes.php'));
+        // dump(view()->exists('ecommerce:admin.tests.demo'));
+        // return view('ecommerce:admin.tests.demo', ['name' => $request->name]);
         $webType = get_web_type();
         switch ($webType) {
             case 'default':
                 return $this->viewDefaultDashboard($request);
                 break;
-            
+
             default:
                 # code...
                 return $this->viewModule('index');
                 break;
         }
-        
     }
 
     public function viewDefaultDashboard(Request $request)
@@ -52,5 +53,4 @@ class DashboardController extends AdminController
         $data = [];
         return $this->viewModule('default', $data);
     }
-
 }

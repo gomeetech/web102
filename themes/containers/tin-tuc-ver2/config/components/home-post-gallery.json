@@ -1,0 +1,68 @@
+{
+    "name": "Home: Tin bài dạng slider (Carousel Gallery)",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)"
+        },
+        "link": {
+            "type": "text",
+            "label": "Liên kết trong tiêu đề (Tùy chọn)"
+        },
+        "text": {
+            "type": "text",
+            "label": "Text của liên kết trong tiêu đề (Tùy chọn)"
+        },
+        "mark_title": {
+            "type": "text",
+            "label": "Tiêu đề bôi màu (Tùy chọn)"
+        },
+        
+        "gallery_title": {
+            "type": "text",
+            "label": "Tiêu đề gallery (Tùy chọn)"
+        },
+        
+        
+        "dynamic_id": {
+            "type": "crazyselect",
+            "label": "Mục (tùy chọn)",
+            "template": "crazyselect",
+            "call": "get_dynamic_options",
+            "params": [[], "Chọn một"],
+            "@change": "Crazy.posts.changeDynamicID",
+            "required": "true"
+        },
+        "category_id": {
+            "type": "crazyselect",
+            "label": "Danh mục",
+            "template": "crazyselect",
+            "call": "get_post_category_options",
+            "params": [
+                {
+                    "dynamic_id": "#dynamic_id"
+                },
+                true
+            ],
+            "@label-type": "value"
+        },
+        "content_type": {
+            "type": "radio",
+            "label": "Loại nội dung",
+            "call": "get_content_type_options",
+            "params": ["Tất cả"]
+        },
+        "sorttype": {
+            "type": "select",
+            "label": "kiểu sắp xếp",
+            "call": "get_post_sortby_options"
+        },
+        "post_number": {
+            "type": "number",
+            "label": "Số tin bài",
+            "min": 1,
+            "step": 1,
+            "default": 10
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "name": "Footer Column: Giới thiệu",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề",
+            "value": "Giới thiệu"
+        },
+        "about_content": {
+            "type": "textarea",
+            "label": "Nội dung",
+            "className": "auto-height"
+        },
+        "show_logo": {
+            "type": "switch",
+            "label": "Hiển thị logo",
+            "check_label": "Có",
+            "value_type": "boolean",
+            "value": true
+        },
+        "show_text_logo": {
+            "type": "switch",
+            "label": "Hiển thị text logo",
+            "check_label": "Có",
+            "value_type": "boolean",
+            "value": true
+        },
+        "text_logo_primary": {
+            "type": "text",
+            "label": "Text Logo (chính)",
+            "value": "Tin Tức"
+        },
+        "text_logo_second": {
+            "type": "text",
+            "Label": "Text Logo (bổ xung)",
+            "value": "24/7"
+        },
+        "highlight": {
+            "type": "select",
+            "label": "làm nổi bật",
+            "data": {
+                "none": "Không",
+                "primary": "Text chính",
+                "second": "Text phụ",
+                "both": "Tất cả"
+            },
+            "default": "second"
+        },
+        "text_logo_slogan": {
+            "type": "text",
+            "Label": "Khẩu hiệu",
+            "placeholder": "Mặc dịnh sẽ lấy từ thiết lập thông tin wwbsite"
+
+        }
+
+    }
+}

@@ -1,0 +1,95 @@
+{
+    "name": "Home: Danh sách & Menu danh mục",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)"
+        },
+        "sub_title": {
+            "type": "text",
+            "label": "Tiêu đề phụ (Tùy chọn)"
+        },
+        "bg_style": {
+            "type": "crazyselect",
+            "label": "Nền tiêu đề",
+            "call": "get_number_options",
+            "params": [1, 12]
+        },
+        "dynamic_id": {
+            "type": "crazyselect",
+            "label": "Mục (tùy chọn)",
+            "template": "crazyselect",
+            "call": "get_dynamic_options",
+            "params": [[], "Chọn một"],
+            "@change": "Crazy.posts.changeDynamicID",
+            "required": "true"
+        },
+        "category_id": {
+            "type": "crazyselect",
+            "label": "Danh mục",
+            "template": "crazyselect",
+            "call": "get_post_category_options",
+            "params": [
+                {
+                    "dynamic_id": "#dynamic_id"
+                },
+                true
+            ],
+            "@label-type": "value"
+        },
+        "children_number": {
+            "type": "number",
+            "label": "Số danh mục con",
+            "min": 1,
+            "step": 1,
+            "default": 15
+        },
+        "group_by_category": {
+            "type": "switch",
+            "label": "Nhóm theo danh mục",
+            "value_type": "boolean"
+
+        },
+        "sorttype": {
+            "type": "select",
+            "label": "kiểu sắp xếp",
+            "call": "get_post_sortby_options"
+        },
+        "post_number": {
+            "type": "number",
+            "label": "Số tin bài",
+            "min": 1,
+            "step": 1,
+            "default": 5
+        },
+        "menu_type": {
+            "type": "crazyselect",
+            "label": "Kiểu menu",
+            "data": {
+                "children": "Danh mục con",
+                "menu": "Menu"
+            },
+            "default": "children"
+        },
+        "menu_id": {
+            "type":"crazyselect",
+            "label": "Menu",
+            "call": "get_menu_options",
+            "params":[[], "Chọn một"]
+        },
+        "sidebar_title": {
+            "type": "text",
+            "label": "Tiêu đề sidebar (Tùy chọn)"
+        },
+        "sidebar_post_number": {
+            "type": "number",
+            "label": "Số tin bài ở sidebar",
+            "min": 1,
+            "step": 1,
+            "default": 10
+        }
+    },
+    "data": {
+        "sidebar_title": "Tin mới nhất"
+    }
+}

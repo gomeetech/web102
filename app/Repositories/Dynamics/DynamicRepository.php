@@ -145,7 +145,7 @@ class DynamicRepository extends BaseRepository
                     [
                         'title' => 'Thông tin SEO',
                         'class' => 'col-12 col-lg-6',
-                        'inputs' => [
+                        'inputs' => in_array('seo', $dff)?['seo']:[
                             'meta_title', 'meta_description', 'keywords'
                         ]
                     ],

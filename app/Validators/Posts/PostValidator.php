@@ -45,7 +45,6 @@ class PostValidator extends BaseValidator
             if(($this->content_type == 'video_embed' || $this->_dynamic->post_type == 'video_embed') && !get_video_from_url($value)) return false;
             return true;
         });
-        
     }
     /**
      * ham lay rang buoc du lieu
@@ -62,6 +61,7 @@ class PostValidator extends BaseValidator
             'content'                          => 'mixed',
             'content_type'                     => 'check_content_type',
             'keywords'                         => 'mixed',
+            
             'source'                           => 'mixed',
             'feature_image'                    => 'mimes:jpg,jpeg,png,gif',
             'feature_image_data'               => 'base64_file:image',
@@ -75,10 +75,21 @@ class PostValidator extends BaseValidator
             'meta_description'                 => 'max:300',
         ];
 
-        $data = [];
+        $data = [
+            // 'focus_keyword'                    => 'mixed',
+            // 'meta_title'                       => 'max:191',
+            // 'meta_description'                 => 'max:500',
+        ];
         $d = $this->_dynamic;
         if($d){
             if(is_array($default = $d->default_fields)){
+                if(in_array('seo', $default)){
+                    $data = array_merge($data, [
+                        'focus_keyword'                    => 'mixed',
+                        'meta_title'                       => 'max:191',
+                        'meta_description'                 => 'max:500',
+                    ]);
+                }
                 foreach ($default as $field) {
                     if(array_key_exists($field, $rules)){
                         $data[$field] = $rules[$field];
@@ -109,7 +120,7 @@ class PostValidator extends BaseValidator
             }
 
         }
-
+        // dd($data);
         return $data;
         // return $this->parseRules($rules);
     }

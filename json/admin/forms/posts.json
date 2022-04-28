@@ -138,6 +138,10 @@
         "label": "Đường dẫn video",
         "placeholder": "Nhập Đường dẫn video. ví dụ: https://www.youtube.com/watch?v=ABcD123",
         "required": "true"
+    },
+    "seo": {
+        "type": "seo",
+        "label": "Yoast SEO"
     }
     
 }

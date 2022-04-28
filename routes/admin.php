@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\General\DashboardController;
 use App\Http\Controllers\Admin\General\DynamicController;
+use Gomee\Core\System;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,7 @@ Route::name('admin.')->group(function () use ($routes) {
         } else {
             $pf = $middleware;
         }
+        if($pf == 'posts') continue;
         if ($pf && file_exists($path = base_path('routes/admin/' . $pf . '.php'))) {
             $router = Route::prefix($pf);
             if ($mw) {
@@ -64,7 +66,39 @@ Route::name('admin.')->group(function () use ($routes) {
         }
     }
 
-    Route::get('posts/categorie/options',   [DynamicController::class, 'getCategoryOptions']       )->name('posts.category-options');
+    if($packageRoutes = System::getAllRoutes()){
+        foreach ($packageRoutes as $slug => $scopeRoutes) {
+            // chỉ lấy các route admin
+            if(array_key_exists('admin', $scopeRoutes) && $scopeRoutes['admin']){
+                $routes = $scopeRoutes['admin'];
+                foreach ($routes as $key => $routeParam) {
+                    if($routeParam['prefix']){
+                        $router = Route::prefix($routeParam['prefix']);
+                        if($routeParam['name']){
+                            $router->name($routeParam['name']);
+                        }
+                        if($routeParam['middleware']){
+                            $router->middleware($middleware['middleware']);
+                        }
+                    }elseif($routeParam['name']){
+                        $router = Route::name($routeParam['name']);
+                        if($routeParam['middleware']){
+                            $router->middleware($middleware['middleware']);
+                        }
+                    }elseif($routeParam['middleware']){
+                        $router = Route::middleware($routeParam['name']);
+                    }
+                    else{
+                        $router = Route::middleware('next');
+                    }
+                    $router->group($routeParam['group']);
+                }
+            }
+        }
+    }
+    
+
+    Route::get('posts/categorie/options',[DynamicController::class, 'getCategoryOptions'])->name('posts.category-options');
 
     Route::middleware(['dynamic.post'])->name('posts')->group(base_path('routes/admin/posts.php'));
 });

@@ -125,8 +125,8 @@ class ThemeRepository extends BaseRepository
     public function init()
     {
         $this->metadataReposirory = app(MetadataRepository::class);
-        // $this->menuRepository = app(MenuRepository::class);
-        // $this->itemRepository = app(ItemRepository::class);
+        $this->menuRepository = app(MenuRepository::class);
+        $this->itemRepository = app(ItemRepository::class);
         $this->webDataRepository = app(WebDataRepository::class);
     }
 
@@ -236,7 +236,7 @@ class ThemeRepository extends BaseRepository
     {
         // $this->resetDefaultParams('owner');
         return $this->where(function ($query) {
-            $query->where('privacy', 'published');//->orWhere('owner_id', $this->getOwnerID());
+            $query->whereIn('privacy', ['published', 'publish', 'public']);//->orWhere('owner_id', $this->getOwnerID());
         })->where('available', 1);
     }
 
@@ -540,11 +540,12 @@ class ThemeRepository extends BaseRepository
     public function active(int $id)
     {
         $theme = $this->detailQuery()->findBy('id', $id);
+        // die(json_encode($theme));
         if (!$theme) return false;
         $theme->applyMeta();
         
 
-        if($this->webDataRepository->updateData('web.settings', ['theme_id'=>$theme->id])){
+        if($this->webDataRepository->updateData('web.config', ['theme_id'=>$theme->id])){
             $this->firstSetup($theme);
             return true;
         }
@@ -564,7 +565,7 @@ class ThemeRepository extends BaseRepository
         $theme->applyMeta();
         
 
-        if($this->webDataRepository->updateData('web.settings', ['theme_id'=>$theme->id])){
+        if($this->webDataRepository->updateData('web.config', ['theme_id'=>$theme->id])){
             $this->firstSetup($theme);
             return true;
         }
@@ -580,7 +581,7 @@ class ThemeRepository extends BaseRepository
     public function checkThemeActiveList($theme_id)
     {
 
-        if ($listStr = $this->webDataRepository->getGroupData('web.settings.installed_themes')) {
+        if ($listStr = $this->webDataRepository->getGroupData('web.config.installed_themes')) {
             try {
                 $this->theme_active_list = is_array($listStr)?$listStr:json_decode($listStr, true);
             } catch (NotReportException $th) {
@@ -599,7 +600,7 @@ class ThemeRepository extends BaseRepository
 
         if (!in_array($theme_id, $this->theme_active_list)) {
             $this->theme_active_list[] = $theme_id;
-            $this->webDataRepository->updateData('web.settings', ['installed_themes' => json_encode($this->theme_active_list)]);
+            $this->webDataRepository->updateData('web.config', ['installed_themes' => json_encode($this->theme_active_list)]);
         }
     }
     /**

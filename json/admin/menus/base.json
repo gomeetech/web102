@@ -11,6 +11,7 @@
             "settings"
         ],
         "@yield": "*",
+        "@package": "admin",
         "pages": {
             "text": "Trang",
             "title": "Quản lý trang",

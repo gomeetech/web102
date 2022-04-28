@@ -163,7 +163,8 @@ class PostController extends AdminController
         $this->cancelButtonUrl = admin_dynamic_url('list');
 
         $config->input_type = 'list';
-        $inputs = $this->repository->getFormInputs($this->formDir);
+        $inputs = $this->repository->getFormInputs($this->realFormDir);
+
         $config->form_config = $dynamic->form_config;
         if ($dynamic->post_type != 'custom') {
             if (isset($inputs['content_type'])) {
@@ -188,6 +189,7 @@ class PostController extends AdminController
             'use_gallery' => $dynamic->use_gallery,
         ]);
 
+
         add_js_src('static/manager/js/posts.form.js');
     }
 
@@ -209,6 +211,35 @@ class PostController extends AdminController
                 }
             }
         }
+    }
+
+    public function beforeGetCrudForm($request, $config, $inputs, $data, $attribues)
+    {
+        $baseTitle = ($this->dynamic->use_category && $data->category_id && $category = get_post_category(['id' => $data->category_id]) ? $category->name . ' | ' : ''
+        ) . $this->dynamic->name . ' | ' . siteinfo('site_name');
+        add_js_data('seo_data', [
+            'baseURL' => url($this->dynamic->slug) . '/',
+            'data' => [
+                'urlParh' => $data->slug,
+                'title' => $data->meta_title,
+                'metaDesc' => $data->meta_description,
+                'content' => $data->content,
+                'focusKeyword' => $data->focus_keyword,
+                'fullTitle' => ($data->title ? $data->title . ' | ' : '') . $baseTitle,
+                'baseTitle' => $baseTitle
+            ],
+            '__default__' => [
+                'baseURL' => url($this->dynamic->slug) . '/',
+                'baseTitle' => $baseTitle
+            ],
+            '__placeholder__' => [
+                'title' => $data->meta_title?$data->meta_title:(($data->title ? $data->title . ' | ' : 'Tiêu đề | ') . $baseTitle),
+                'urlPath' => $data->slug??'slug'
+            ]
+
+        ]);
+
+        // dd($data->all());
     }
 
     /**
@@ -238,6 +269,8 @@ class PostController extends AdminController
      */
     protected function beforeSave(Request $request, $data)
     {
+        $data->keywords = $data->focus_keyword;
+        // dd($data->all());
         $slug = str_slug($request->custom_slug ? $request->slug : $request->title);
         $data->slug = $this->repository->getSlug(
             $slug ? $slug : uniqid(),
@@ -287,6 +320,7 @@ class PostController extends AdminController
         // meta data
         $meta = $data->copy([
             'custom_slug',
+            'focus_keyword',
             'meta_title',
             'meta_description',
             'featured_image_keep_original'

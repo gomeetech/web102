@@ -93,15 +93,19 @@
             "template": "radio",
             "label": "Riêng tư",
             "data": {
-                "public": "Công khai",
+                "publish": "Công khai",
                 "private": "Không công khai"
             },
-            "default": "public",
+            "default": "publish",
             "@options": {
                 "form_group_class": "row",
                 "label_class": "col-12 col-lg-4 col-xl-3 col-form-label",
                 "wrapper_class": "col-12 col-lg-8 col-xl-9"
             }
+        },
+        "seo": {
+            "type": "seo",
+            "label": "Yoast SEO"
         }
     },
     "config": {
@@ -136,9 +140,7 @@
                 "title": "Thong tin SEO",
                 "class": "col-md-6",
                 "inputs": [
-                    "meta_title",
-                    "keywords",
-                    "meta_description"
+                    "seo"
                 ]
             },
             {

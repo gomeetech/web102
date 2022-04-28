@@ -124,7 +124,7 @@
 </textarea>
 
 <textarea class="theme-available-template d-none" style="display: none">
-	{{-- <a href="javascript:void(0)" class="btn m-btn--pill  btn-sm m-btn m-btn--custom"><span class="btn-text">{$btn_text}</span></a> --}}
+	<a href="{$edit_url}" title="Sửa" class="ml-3 btn btn-outline-info m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill m-btn--air"><i class="flaticon-edit-1"></i></a>
 	<a href="javascript:void(0)" data-id="{$id}" title="Kích hoạt" class="ml-3 btn btn-active-theme {$btn_class} m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill m-btn--air"><i class="fa fa-bolt"></i></a>
 </textarea>
 <textarea class="theme-pending-template d-none" style="display: none">

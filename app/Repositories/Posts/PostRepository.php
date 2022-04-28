@@ -48,6 +48,11 @@ class PostRepository extends BaseRepository
      */
     protected $checked = false;
 
+    /**
+     * filemanager
+     *
+     * @var Filemanager
+     */
     protected $filemanager;
 
 
@@ -196,14 +201,16 @@ class PostRepository extends BaseRepository
     public function getDefaultActiveInputs($formDir = null)
     {
         // nếu chưa được set dynamic hoặc không có sẽ trả về mảng rỗng
+        // dd($dynamic = get_web_data('dynamic'));
         if(!($dynamic = get_web_data('dynamic'))) return [];
         $data = [];
         $file = ($formDir??'admin/forms') . '/posts';
-        if($storage = $this->getStorageData($file)){
-            $inputs = new Arr($storage);
-        }else{
+        // if($storage = $this->getStorageData($file)){
+        //     $inputs = new Arr($storage);
+        // }else{
             $inputs = $this->filemanager->getJson($file, true);
-        }
+        // }
+        // dd($inputs);
         
         
         // nếu không có input hoặc default không phải mảng thỉ trả về rỗng

@@ -57,5 +57,17 @@ class Data
         return static::$data->all();
     }
     
+    public static function addHtmlPlugin($type, $file){
+        $plugins = static::get('___html___plugins___', ['css' => [], 'javascript' => []]);
+        if(!array_key_exists($type, $plugins)) $plugins[$type] = [];
+        if(!in_array($file, $plugins[$type]))$plugins[$type][] = $file;
+        static::set('___html___plugins___', $plugins);
+    }
+    public static function getHtmlPlugins($type = null)
+    {
+        $plugins = static::get('___html___plugins___', ['css' => [], 'javascript' => []]);
+        if($type) return array_key_exists($type, $plugins) ? $plugins[$type] : [];
+        return $plugins;
+    }
     
 }

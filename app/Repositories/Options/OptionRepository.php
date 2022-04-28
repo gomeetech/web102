@@ -149,7 +149,7 @@ class OptionRepository extends BaseRepository
         }else{
             $optionParams['ref_id'] = 0;
         }
-        
+        // die(json_encode($optionParams));
         if(!($option = $this->first($optionParams))) return [];
         
         
@@ -245,6 +245,7 @@ class OptionRepository extends BaseRepository
     {
         if(!$data) return false;
         $params = new Arr($args);
+        
         if(!count($optionGroup = $this->getGroupParams($params))) return false;
         extract($optionGroup);
         

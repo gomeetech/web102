@@ -116,8 +116,10 @@ class Theme extends Model
         }else{
             $image = 'default.png';
         }
+
         $fd = $this->getImageFolder();
-        $url = asset('static/'.$fd.'/'.$image);
+        $path = $this->getSecretPath($fd.'/'.$image);
+        $url = asset($path);
         if($urlencode) return urlencode($url);
         return $url;
     }

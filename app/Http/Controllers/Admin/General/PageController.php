@@ -110,6 +110,7 @@ class PageController extends AdminController
         $meta = $data->copy(
             [
                 'custom_slug',
+                'focus_keyword',
                 'meta_title',
                 'meta_description',
                 'featured_image_keep_original'

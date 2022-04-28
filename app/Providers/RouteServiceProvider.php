@@ -36,11 +36,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix('api')
                 ->middleware(['api', 'checkinstalled'])
                 ->group(base_path('routes/api.php'));
-
+            Route::prefix('webapi')
+                ->middleware(['api', 'checkinstalled'])
+                ->group(base_path('routes/client/api.php'));
             Route::prefix('setup')
                 ->middleware(['web', 'checknotinstall'])
                 ->group(base_path('routes/setup.php'));
-
             Route::prefix('admin')
                 ->middleware(['web', 'checkinstalled', 'auth', 'https.redirect', 'permission', 'admin.share'])
                 ->group(base_path('routes/admin.php'));

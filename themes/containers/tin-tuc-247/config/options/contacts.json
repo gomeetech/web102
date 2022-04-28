@@ -1,0 +1,129 @@
+{
+    "label": "Liên hệ",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề giới thiệu (Tùy chọn)"
+        },
+        "description": {
+            "type": "textarea",
+            "label": "Mô tả (Tùy chọn)"
+        },
+        "show_map": {
+            "type":"switch",
+            "label":"Hiển thị Bản đồ",
+            "check_label": "Có",
+            "value_type":"boolean"
+        },
+        "place": {
+            "type": "text",
+            "label": "Tên địa điểm"
+        },
+        "lat": {
+            "type": "text",
+            "label": "Vĩ độ (latitude)"
+        },
+        "long": {
+            "type": "text",
+            "label": "Vĩ độ (longitude)"
+        },
+        "map_type": {
+            "type": "radio",
+            "label": "Loại bản đồ",
+            "data": {
+                "lib": "Dùng thư viện",
+                "code": "Dùng mã nhúng"
+            },
+            "default": "lib"
+        },
+        "map_code": {
+            "type": "textarea",
+            "label": "Mã nhúng bản đồ",
+            "placeholder": "Nhập mã Mã nhúng"
+        },
+        "email": {
+            "type": "text",
+            "Label": "Email",
+            "placeholder": "Mặc dịnh sẽ lấy từ thiết lập thông tin wwbsite"
+        },
+        "phone_number": {
+            "type": "text",
+            "Label": "Số điện thoại",
+            "placeholder": "Mặc dịnh sẽ lấy từ thiết lập thông tin wwbsite"
+        },
+        "address": {
+            "type": "text",
+            "Label": "Địa chỉ",
+            "placeholder": "Mặc dịnh sẽ lấy từ thiết lập thông tin wwbsite"
+        },
+        "facebook": {
+            "type": "text",
+            "label": "facebook (Tùy chọn)",
+            "placeholder": "Không bắt buộc"
+        },
+        "twitter": {
+            "type": "text",
+            "label": "twitter (Tùy chọn)",
+            "placeholder": "Không bắt buộc"
+        },
+        "youtube": {
+            "type": "text",
+            "label": "youtube (Tùy chọn)",
+            "placeholder": "Không bắt buộc"
+        },
+        "linkedin": {
+            "type": "text",
+            "label": "Linkedin (Tùy chọn)",
+            "placeholder": "Không bắt buộc"
+        },
+        "instagram": {
+            "type": "text",
+            "label": "instagram (Tùy chọn)",
+            "placeholder": "Không bắt buộc"
+        },
+        "pinterest": {
+            "type": "text",
+            "label": "Pinterest (Tùy chọn)",
+            "placeholder": "Không bắt buộc"
+        }
+    },
+    "config": {
+        "name": "Thông tin trang liên hệ",
+        "layout_type": "single",
+        "form_groups": [
+            {
+                "title": "Trang liên hệ",
+                "inputs": [
+                    "title",
+                    "description",
+                    "show_map",
+                    "place",
+                    "lat",
+                    "long",
+                    "map_type",
+                    "map_code"
+                ]
+            },
+            {
+                "title": "Thông tin liên hệ",
+                "inputs": [
+                    "address",
+                    "phone_number",
+                    "email"
+                ]
+            },
+            {
+                "title": "Liên kết mạng xã hội",
+                "inputs": [
+                    "facebook",
+                    "twitter",
+                    "youtube",
+                    "linkedin",
+                    "instagram",
+                    "pinterest",
+                    "tumblr"
+                ]
+            }
+        ]
+    }
+}

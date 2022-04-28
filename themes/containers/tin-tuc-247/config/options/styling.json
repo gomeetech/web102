@@ -1,0 +1,71 @@
+{
+    "label": "Styling",
+    "inputs": {
+        "color": {
+            "type": "colorselect",
+            "label": "Màu chủ dạo",
+            "@colors": {
+                "red": {
+                    "text": "Đỏ",
+                    "color": "#e4000d",
+                    "value": "red"
+                },
+                "blue": {
+                    "text": "Xanh da trời",
+                    "color": "#53b1ff",
+                    "value": "blue"
+                },
+                "dark-blue": {
+                    "text": "Xanh da trời Đậm",
+                    "color": "#00469a",
+                    "value": "dark-blue"
+                },
+                "green": {
+                    "text": "Xanh lá",
+                    "color": "#4cb050",
+                    "value": "green"
+                },
+                "orange": {
+                    "text": "Cam",
+                    "color": "#fb8c00",
+                    "value": "orange"
+                },
+                "deep-orange": {
+                    "text": "Cam đỏ",
+                    "color": "#ff4011",
+                    "value": "deep-orange"
+                },
+                
+                "turquoise": {
+                    "text": "Xanh san hô",
+                    "color": "#39c9bb",
+                    "value": "turquoise"
+                },
+                "pink": {
+                    "text": "Hồng",
+                    "color": "#ea0253",
+                    "value": "pink"
+                },
+                "purple": {
+                    "text": "Tím",
+                    "color": "#6441a5",
+                    "value": "purple"
+                },
+                "slate": {
+                    "text": "Xám lông chuột",
+                    "color": "#64666c",
+                    "value": "slate"
+                }
+                
+            },
+            "value": "blue"
+        },
+        "show_pageloader": {
+            "type": "switch",
+            "label": "Hiển thị page loader",
+            "check_label": "Có",
+            "value_type": "boolean",
+            "value": true
+        }
+    }
+}

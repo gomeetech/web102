@@ -1,0 +1,51 @@
+{
+    "label": "Chi tiết tin",
+    "inputs": {
+        "show_banner": {
+            "type":"switch",
+            "label":"Hiển thị banner quảng cáo",
+            "check_label": "Có",
+            "value_type":"boolean",
+            "value": true
+        },
+        "banner_image": {
+            "type": "file",
+            "label": "Banner 1248 x 130"
+            
+        },
+        "banner_alt": {
+            "type":"text",
+            "label": "Chú thích banner"
+        },
+        "banner_link": {
+            "type":"text",
+            "label": "Liên kết"
+        },
+        "ads_type": {
+            "type": "radio",
+            "label": "Loại quảng cáo",
+            "data": {
+                "banner": "Banner",
+                "code": "Mã quảng cáo"
+            },
+            "default": "banner"
+        },
+        "ads_code": {
+            "type": "textarea",
+            "label": "Mã quảng cáo",
+            "placeholder": "Nhập mã quảng cáo"
+        },
+        "show_related_url": {
+            "type":"switch",
+            "label":"Hiển thị link các tin bài liên quan",
+            "check_label": "Có",
+            "value_type":"boolean",
+            "value": true
+        },
+        "single_post":{
+            "type": "area",
+            "label": "Các mục bổ xung",
+            "value": "single_post"
+        }
+    }
+}

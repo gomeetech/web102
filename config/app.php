@@ -192,6 +192,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // ...
+        'Helper' => Gomee\Engines\Helper::class,
+        'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class,
     ])->toArray(),
 
 ];

@@ -1,0 +1,43 @@
+{
+    "name": "Sidebar: Liên kết mạng xã hội",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)",
+            "placeholder": "Ví dụ kết nối với chúng tôi"
+        },
+        "facebook": {
+            "type": "text",
+            "label": "facebook (Tùy chọn)",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        },
+        "twitter": {
+            "type": "text",
+            "label": "twitter (Tùy chọn)",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        },
+        "youtube": {
+            "type": "text",
+            "label": "youtube (Tùy chọn)",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        },
+        "linkedin": {
+            "type": "text",
+            "label": "Linkedin (Tùy chọn)",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        },
+        "instagram": {
+            "type": "text",
+            "label": "instagram (Tùy chọn)",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        },
+        "pinterest": {
+            "type": "text",
+            "label": "Pinterest (Tùy chọn)",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        }
+    },
+    "data": {
+        "title": "Kết nối với chúng tôi"
+    }
+}

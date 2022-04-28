@@ -1,0 +1,26 @@
+{
+    "name": "Sidebar: Đăng ký nhận tin",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)",
+            "placeholder": "Ví dụ: Đăng ký theo dõi"
+        },
+        "placeholder": {
+            "type": "text",
+            "label": "Placeholder (Tùy chọn)",
+            "placeholder": "Ví dụ: Nhập email của bạn"
+        },
+        "button": {
+            "type": "text",
+            "label": "Nút đăng ký",
+            "placeholder": "Mặc dịnh sẽ lấy theo mục liên hệ học thông tin website"
+        }
+    },
+    "data": {
+        "title": "Dăng ký nhận tin",
+        "placeholder":  "Ví dụ: Nhập email của bạn",
+        "button": "Nút đăng ký"
+        
+    }
+}

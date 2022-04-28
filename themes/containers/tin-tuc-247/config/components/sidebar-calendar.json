@@ -1,0 +1,20 @@
+{
+    "name": "Sidebar: Lịch",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)"
+        },
+        
+        
+        "lang": {
+            "type": "radio",
+            "label": "Ngôn ngữ",
+            "data": {
+                "vi": "Tiếng Việt",
+                "en": "Tiếng Anh"
+            },
+            "default": "vi"
+        }
+    }
+}

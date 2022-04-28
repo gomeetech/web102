@@ -1,0 +1,29 @@
+{
+    "name": "Chi tiết tin: Tin lên quan",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)"
+        },
+        "sub_title": {
+            "type": "text",
+            "label": "Tiêu đề phụ (Tùy chọn)"
+        },
+        "sorttype": {
+            "type": "select",
+            "label": "kiểu sắp xếp",
+            "call": "get_post_sortby_options"
+        },
+        "post_number": {
+            "type": "select",
+            "label": "Số tin bài",
+            "data":{
+                "3": 3,
+                "6": 6,
+                "9": 0,
+                "12":12
+            },
+            "default": 3
+        }
+    }
+}

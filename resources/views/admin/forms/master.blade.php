@@ -21,8 +21,10 @@ $args = [
 	'data' => $form_data,
 	'errors' => $errors
 ];
+
 $input_options = ['className'=>'form-control m-input'];
 $form = new Form($args, $input_options, $form_attrs);
+// dd($form);
 $form->query(['type' => ['radio', 'checkbox', 'crazyselect', 'file']])->map('removeClass', ['form-control', 'm-input']);
 $form->query(['type' => 'checkbox'])->map('setOption', 'label_class', 'm-checkbox');
 $form->query(['type' => 'radio'])->map('setOption', 'label_class', 'm-radio');

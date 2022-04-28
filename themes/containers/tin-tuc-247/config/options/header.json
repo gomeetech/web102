@@ -1,0 +1,126 @@
+{
+    "label": "Header",
+    "inputs": {
+        "show_text_logo": {
+            "type": "switch",
+            "label": "Hiển thị text logo",
+            "check_label": "Có",
+            "value_type": "boolean",
+            "value": true
+        },
+        "text_logo_primary": {
+            "type": "text",
+            "label": "Text Logo (chính)",
+            "value": "Tin Tức"
+        },
+        "text_logo_second": {
+            "type": "text",
+            "Label": "Text Logo (bổ xung)",
+            "value": "24/7"
+        },
+        "highlight": {
+            "type": "select",
+            "label": "làm nổi bật",
+            "data": {
+                "none": "Không",
+                "primary": "Text chính",
+                "second": "Text phụ",
+                "both": "Tất cả"
+            }
+        },
+        "text_logo_slogan": {
+            "type": "text",
+            "Label": "Khẩu hiệu",
+            "placeholder": "Mặc dịnh sẽ lấy từ thiết lập thông tin wwbsite"
+
+        },
+        "show_banner": {
+            "type":"switch",
+            "label":"Hiển thị banner quảng cáo",
+            "check_label": "Có",
+            "value_type":"boolean",
+            "value": true
+        },
+        "banner_image": {
+            "type": "file",
+            "label": "Banner 720 x 90",
+            "template": "cropit",
+            "data-width": 720,
+            "data-height": 90
+        },
+        "banner_alt": {
+            "type":"text",
+            "label": "Chú thích banner"
+        },
+        "banner_link": {
+            "type":"text",
+            "label": "Liên kết"
+        },
+        "ads_type": {
+            "type": "radio",
+            "label": "Loại quảng cáo",
+            "data": {
+                "banner": "Banner",
+                "code": "Mã quảng cáo"
+            },
+            "default": "banner"
+        },
+        "ads_code": {
+            "type": "textarea",
+            "label": "Mã quảng cáo",
+            "placeholder": "Nhap76 mã quảng cáo"
+        },
+        "show_datetime": {
+            "type":"switch",
+            "label":"Hiển thị thời gian",
+            "check_label": "Có",
+            "value_type":"boolean",
+            "value": true
+        },
+        "datetime_lang":{
+            "type": "radio",
+            "label": "Ngôn ngữ",
+            "data": {
+                "vi": "Tiếng Việt",
+                "en": "Tiếng Anh"
+            },
+            "value": "vi"
+        },
+        "date_format": {
+            "type": "text",
+            "label": "Định dạng ngày tháng",
+            "placeholder": "ví dụ: w, d/m/y",
+            "comment": "trong đó: %w là ngày trong tuần, %d là ngày trong tháng, %m là tháng bàng số, %M là tháng bàng tên, %yy là năm",
+            "value": "%w, ngày %d $M %y"
+        }
+        
+    },
+    "config": {
+        "name": "Header",
+        "layout_type": "single",
+        "form_groups": {
+            "logos": {
+                "title": "Logo",
+                "inputs": [
+                    "show_text_logo",
+                    "text_logo_primary",
+                    "text_logo_second",
+                    "highlight",
+                    "text_logo_slogan"
+                ]
+            },
+            "banner": {
+                "title": "Banner quảng cáo",
+                "inputs": [
+                    "show_banner", "banner_image", "banner_alt", "banner_link", "ads_type", "ads_code"
+                ]
+            },
+            "datetime": {
+                "title": "Ngày tháng",
+                "inputs": [
+                    "show_datetime", "datetime_lang", "date_format"
+                ]
+            }
+        }
+    }
+}

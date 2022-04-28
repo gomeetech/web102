@@ -1,0 +1,10 @@
+{
+    "label": "Trang chủ",
+    "inputs": {
+        "sections": {
+            "type": "area",
+            "label": "Các mục xuất hiện trên trang chủ",
+            "value": "home"
+        }
+    }
+}

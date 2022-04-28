@@ -1,0 +1,10 @@
+{
+    "label": "Chi tiết Page",
+    "inputs": {
+        "single_page":{
+            "type": "area",
+            "label": "Các mục bổ xung",
+            "value": "single_post"
+        }
+    }
+}

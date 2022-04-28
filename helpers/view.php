@@ -1,5 +1,6 @@
 <?php
 
+use App\Web\Data;
 use Gomee\Html\Html;
 use Gomee\Html\Menu;
 use Gomee\Html\Form;
@@ -426,6 +427,33 @@ if(!function_exists('get_result_blade_vars')){
 }
 
 
+if(!function_exists('add_html_plugin')){
+    /**
+     * theme html plugin
+     * @param string $type
+     * @param string $file
+     *
+     * @return mixed
+     */
+    function add_html_plugin($type, $file)
+    {
+        return Data::addHtmlPlugin($type, $file);
+    }
+}
+if(!function_exists('get_html_plugins')){
+    /**
+     * get html plugin
+     * @param string $type
+     *
+     * @return array
+     */
+    function get_html_plugins($type)
+    {
+        return Data::getHtmlPlugins($type);
+    }
+}
+
+
 if(!function_exists('is_support_template')){
 
     function is_support_template($template, $type){
@@ -464,6 +492,8 @@ if(!function_exists('is_support_template')){
             'colorselect'        => ['radio', 'colorselect'],
             'affiliate'          => ['text', 'textarea', 'affiliate'],
             'media'              => ['inputmedia', 'crazymedia', 'media', 'image', 'file'],
+            'seo'                => ['inputseo', 'crazyseo', 'seo'],
+            'content-seo'        => ['content-seo', 'contentseo', 'seocontent', 'seo-content'],
 
 
         ];

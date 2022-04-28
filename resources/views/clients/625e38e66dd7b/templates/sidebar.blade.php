@@ -1,0 +1,1 @@
+{!! $html->news_sidebar->components !!}

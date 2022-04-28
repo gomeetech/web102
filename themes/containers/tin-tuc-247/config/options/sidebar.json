@@ -1,0 +1,10 @@
+{
+    "label": "Sidebar",
+    "inputs": {
+        "widgets": {
+            "type": "area",
+            "label": "Widgets",
+            "value": "news_sidebar"
+        }
+    }
+}

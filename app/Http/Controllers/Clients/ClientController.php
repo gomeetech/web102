@@ -83,24 +83,24 @@ class ClientController extends Controller
 
     protected function shareDefaultData($name = null, $value = null)
     {
-        // if(self::$isShare) return true;
-        // ViewManager::share($name, $value);
-        // self::$isShare = true;
+        if(self::$isShare) return true;
+        ViewManager::share($name, $value);
+        self::$isShare = true;
     }
 
     public function init()
     {
         
-        // $this->cacheViewTime = system_setting('cache_view_time', 0);
-        // $this->cachDatawTime = system_setting('cache_data_time', 0);
-        // $this->viewFolder = 'clients.'.theme_path();
-        // $this->breadcrumb = app(Breadcrumb::class);
-        // $this->device = app(Mobile_Detect::class);
-        // set_web_data('mobile_detect', $this->device);
-        // $this->shareDefaultData([
-        //     'breadcrumb' => $this->breadcrumb ,
-        //     '_device' => $this->device, 
-        // ]);
+        $this->cacheViewTime = system_setting('cache_view_time', 0);
+        $this->cachDatawTime = system_setting('cache_data_time', 0);
+        $this->viewFolder = 'clients.'.theme_path();
+        $this->breadcrumb = app(Breadcrumb::class);
+        $this->device = app(Mobile_Detect::class);
+        set_web_data('mobile_detect', $this->device);
+        $this->shareDefaultData([
+            'breadcrumb' => $this->breadcrumb ,
+            '_device' => $this->device, 
+        ]);
         
         parent::init();
     }

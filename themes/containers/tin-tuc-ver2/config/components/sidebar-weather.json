@@ -1,0 +1,29 @@
+{
+    "name": "Sidebar: Thông tin thời tiết",
+    "inputs": {
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề (Tùy chọn)"
+        },
+        
+        
+        "scale": {
+            "type": "crazyselect",
+            "label": "Thang nhiệu độ",
+            "template": "crazyselect",
+            "data": {
+                "C": "Độ C",
+                "F": "Độ F"
+            },
+            "required": "true"
+        },
+        "lat": {
+            "type": "text",
+            "label": "Vĩ độ (latitude)"
+        },
+        "long": {
+            "type": "text",
+            "label": "Vĩ độ (longitude)"
+        }
+    }
+}

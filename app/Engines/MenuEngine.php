@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Engines;
 
 use App\Repositories\Dynamics\DynamicRepository;
 use App\Repositories\Options\OptionRepository;
+use Gomee\Core\System;
 use Gomee\Engines\JsonData;
 
-Class MenuEngine{
+class MenuEngine
+{
 
     /**
      * duong dan thu muc
@@ -34,7 +37,7 @@ Class MenuEngine{
      */
     public function __construct($path = null)
     {
-        $this->path = trim($path, '/'). '/';
+        $this->path = trim($path, '/') . '/';
         $this->dataEngine = new JsonData();
         $this->optionRepository = app(OptionRepository::class);
     }
@@ -46,7 +49,7 @@ Class MenuEngine{
      */
     public function getData(string $filename)
     {
-        return $this->dataEngine->getJsonData($this->path.trim($filename, '/'));
+        return $this->dataEngine->getJsonData($this->path . trim($filename, '/'));
     }
 
     /**
@@ -56,75 +59,73 @@ Class MenuEngine{
      * @param string $filename
      * @return array
      */
-    public function checkExtends($rawData, string $filename) : array
+    public function checkExtends($rawData, string $filename): array
     {
-        if(!$rawData) return [];
-        $data = $rawData['data']??[];
+        if (!$rawData) return [];
+        $data = $rawData['data'] ?? [];
         // kiểm tra trong mảng gốc có yêu cầu kế thừa hay ko
-        if(array_key_exists('extends', $rawData)){
+        if (array_key_exists('extends', $rawData)) {
             // lấy dử liễu file cần thừa kế
             // tạm bỏ qua nó có kế thừa cái khác hay ko
             $baseData = $this->getData($rawData['extends']);
-            if($baseData && array_key_exists('data', $baseData)){
+            if ($baseData && array_key_exists('data', $baseData)) {
                 $newData = [];
                 $hasYield = false;
                 // duyệt mảng data để lấy ra các phần tử r ném vào new data
                 foreach ($baseData['data'] as $key => $value) {
-                    if(substr($key, 0, 1) == '@'){
+                    if (substr($key, 0, 1) == '@') {
                         // kiểm tra xem có tồn tại key @yield hay ko?
                         $keyFunc = substr($key, 1);
-                        if($keyFunc == 'yield'){
-                            if(
+                        if ($keyFunc == 'yield') {
+                            if (
                                 (is_array($value) && (in_array($filename, $value) || in_array('all', $value) || in_array('*', $value)))
                                 || (is_string($value) && in_array($value, [$filename, 'all', '*']))
-                            ){
+                            ) {
                                 // nếu có thì merge với data
                                 // trùng nhau sẽ được merge, chưa có sẽ dược thêm mới
                                 $hasYield = true;
                                 $newData = array_merge($newData, $data);
-
                             }
-                        }elseif(in_array($keyFunc, ['include', 'module', 'modules'])){
+                        } elseif (in_array($keyFunc, ['include', 'module', 'modules'])) {
                             // kiểm tra xem có yêu cầu include không?
                             // có thì duyệt mảng
-                            if($keyFunc == 'include'){
-                                if(!is_array($value)) $values = [$value];
+                            if ($keyFunc == 'include') {
+                                if (!is_array($value)) $values = [$value];
                                 else $values = $value;
-                            }
-                            elseif(in_array($keyFunc, ['modules', 'module'])){
-                                if(!is_array($value)) $vals = [$value];
+                            } elseif (in_array($keyFunc, ['modules', 'module'])) {
+                                if (!is_array($value)) $vals = [$value];
                                 else $vals = $value;
-                                $values = array_map(function($val){
-                                    return 'module-'.$val;
+                                $values = array_map(function ($val) {
+                                    return 'module-' . $val;
                                 }, $vals);
-
                             }
 
-                            if($values){
+                            if ($values) {
                                 foreach ($values as $key => $file) {
-                                    if($menu = $this->getData($file)){
+                                    if ($menu = $this->getData($file)) {
                                         $newData = array_merge(
                                             $newData,
                                             $this->checkInclude(
-                                                $this->checkExtends($menu??[], $file)
+                                                $this->checkExtends($menu ?? [], $file)
                                             )
                                         );
                                     }
                                 }
                             }
                         }
-
-                    }else{
+                        else{
+                            $newData[$key] = $value;
+                        }
+                    } else {
                         $newData[$key] = $value;
                     }
                 }
-                if($hasYield){
+                if ($hasYield) {
                     $data = $newData;
-                }else{
+                } else {
                     // nếu không có yield thì sẽ merge data vào new data
                     $data = array_merge($newData, $data);
                 }
-
             }
         }
         return $data;
@@ -138,42 +139,43 @@ Class MenuEngine{
      */
     public function checkInclude($data)
     {
-        if(!is_array($data)) return [];
-        if(array_has_any($data, ['@include', '@module', '@modules'])){
+        if (!is_array($data)) return [];
+        if (array_has_any($data, ['@include', '@module', '@modules'])) {
             // kiểm tra xem có yêu cầu include không?
             // có thì duyệt mảng
             $newData = [];
             foreach ($data as $key => $value) {
-                if(substr($key, 0, 1) == '@'){
+                if (substr($key, 0, 1) == '@') {
                     // kiểm tra từ khóa include
                     $keyFunc = substr($key, 1);
                     $values = [];
-                    if($keyFunc == 'include'){
-                        if(!is_array($value)) $values = [$value];
+                    if ($keyFunc == 'include') {
+                        if (!is_array($value)) $values = [$value];
                         else $values = $value;
-                    }
-                    elseif(in_array($keyFunc, ['modules', 'module'])){
-                        if(!is_array($value)) $vals = [$value];
+                    } elseif (in_array($keyFunc, ['modules', 'module'])) {
+                        if (!is_array($value)) $vals = [$value];
                         else $vals = $value;
-                        $values = array_map(function($val){
-                            return 'module-'.$val;
+                        $values = array_map(function ($val) {
+                            return 'module-' . $val;
                         }, $vals);
-
+                    }
+                    else{
+                        $newData[$key] = $value;
                     }
 
-                    if($values){
+                    if ($values) {
                         foreach ($values as $key => $file) {
-                            if($menu = $this->getData($file)){
+                            if ($menu = $this->getData($file)) {
                                 $newData = array_merge(
                                     $newData,
                                     $this->checkInclude(
-                                        $this->checkExtends($menu??[], $file)
+                                        $this->checkExtends($menu ?? [], $file)
                                     )
                                 );
                             }
                         }
                     }
-                }else{
+                } else {
                     $newData[$key] = $value;
                 }
             }
@@ -192,27 +194,29 @@ Class MenuEngine{
     public function get(string $filename)
     {
         // DynamicPost::check($request);
-        if(!$filename) $filename = 'admin';
+        if (!$filename) $filename = 'admin';
         admin_check_dynamic();
         $webType = get_web_type();
         $webSetting = web_setting();
-        $isDemo = $webSetting?($webSetting->package_type == 'demo'):false;
+        $isDemo = $webSetting ? ($webSetting->package_type == 'demo') : false;
         $itemList = get_web_module_list($webType);
         $menuData = $this->getData($filename);
         $data = $this->checkInclude(
-            $this->checkExtends($menuData??[], $filename)
+            $this->checkExtends($menuData ?? [], $filename)
         );
-        $menuitems = isset($data['dashboard'])?[$data['dashboard']]:[];
+        $menuitems = isset($data['dashboard']) ? [$data['dashboard']] : [];
         $issetPost = false;
-
-        if(count($itemList)){
+        // dd($data);
+        if (count($itemList)) {
             foreach ($data as $key => $item) {
-                if(in_array($key, $itemList)){
-                    if(!isset($item['active_key']) || !$item['active_key']){
+                $keyFunc = substr($key, 0, 1) == '@' ? substr($key, 1) : "";
+
+                if (in_array($key, $itemList)) {
+                    if (!isset($item['active_key']) || !$item['active_key']) {
                         $item['active_key'] = $key;
                     }
-                    if($key == 'themes' && $theme = get_active_theme()){
-                        if($this->optionRepository->hasThemeOption($theme->id)){
+                    if ($key == 'themes' && $theme = get_active_theme()) {
+                        if ($this->optionRepository->hasThemeOption($theme->id)) {
                             array_unshift($item['submenu']['data'], [
                                 'text' => 'Tùy biến',
                                 'title' => 'Tùy biến',
@@ -221,9 +225,8 @@ Class MenuEngine{
                                 'icon' => 'paint-brush'
                             ]);
                         }
-                    }
-                    elseif($key == 'settings'){
-                        if($webType == 'ecommerce'){
+                    } elseif ($key == 'settings') {
+                        if ($webType == 'ecommerce') {
                             $item['submenu']['data'][] = [
                                 'text' => 'Trang sản phẩm',
                                 'title' => 'Trang sản phẩm',
@@ -244,9 +247,8 @@ Class MenuEngine{
                                 ],
                                 'icon' => 'shopping-cart'
                             ];
-
                         }
-                        if(!$isDemo){
+                        if (!$isDemo) {
                             $item['submenu']['data'][] = [
                                 'text' => 'Cấu hình',
                                 'title' => 'Cấu hình',
@@ -255,34 +257,40 @@ Class MenuEngine{
                                 'icon' => 'globe'
                             ];
                         }
-
                     }
                     $menuitems[] = $item;
-                }elseif($key == 'crawlers' && $webType == 'ecommerce'){
+                } elseif ($key == 'crawlers' && $webType == 'ecommerce') {
                     $menuitems[] = $item;
-                }
-                elseif($key == 'custom'){
-                    if(is_array($item)){
+                } elseif ($key == 'custom') {
+                    if (is_array($item)) {
                         foreach ($item as $custom) {
-                            if($custom == 'posts'){
+                            if ($custom == 'posts') {
                                 $menuitems = array_merge($menuitems, $this->getPostMenuItems());
                                 $issetPost = true;
-                            }else{
-
+                            } else {
                             }
                         }
-                    }elseif($item == 'posts'){
+                    } elseif ($item == 'posts') {
                         $menuitems = array_merge($menuitems, $this->getPostMenuItems());
                         $issetPost = true;
                     }
+                } elseif ($keyFunc == 'package' || $keyFunc == 'packages') {
+                    $packageMenus = System::getMenus($item);
+                    if ($packageMenus) {
+                        foreach ($packageMenus as $key => $value) {
+                            $menuitems[] = $value;
+                        }
+
+                        // dd($newData);
+                    }
                 }
             }
-            if(!$issetPost){
+            if (!$issetPost) {
                 $menuitems = array_merge($menuitems, $this->getPostMenuItems());
             }
         }
 
-        
+
 
         $sidebar_menu = [
             'type' => 'list',
@@ -297,13 +305,13 @@ Class MenuEngine{
      *
      * @return array
      */
-    public function getPostMenuItems():array
+    public function getPostMenuItems(): array
     {
         $items = [];
 
         // dynamic
         $dynamicRepository = new DynamicRepository();
-        if(count($dynamics = $dynamicRepository->notTrashed()->get())){
+        if (count($dynamics = $dynamicRepository->notTrashed()->get())) {
             foreach ($dynamics as $item) {
                 $m = [
                     'text' => $item->name,
@@ -317,25 +325,24 @@ Class MenuEngine{
                     [
                         'text' => "Danh sách",
                         'active_key' => 'list',
-                        'url' => admin_dynamic_url('list',['dynamic' => $item->slug]),
+                        'url' => admin_dynamic_url('list', ['dynamic' => $item->slug]),
                         'icon' => 'list-ul'
                     ],
                     [
-                        'text' => "Thêm ".$item->name,
+                        'text' => "Thêm " . $item->name,
                         'active_key' => 'create',
-                        'url' => admin_dynamic_url('create',['dynamic' => $item->slug]),
+                        'url' => admin_dynamic_url('create', ['dynamic' => $item->slug]),
                         'icon' => 'plus-circle'
                     ]
                 ];
-                if($item->use_category){
+                if ($item->use_category) {
                     $sub_menu[] = [
                         'text' => "Danh mục",
-                        'active_key' => $item->slug.'.categories.list',
-                        'url' => admin_dynamic_url('categories.list',['dynamic' => $item->slug]),
+                        'active_key' => $item->slug . '.categories.list',
+                        'url' => admin_dynamic_url('categories.list', ['dynamic' => $item->slug]),
                         'icon' => 'hashtag',
-                        'data-active-key' => $item->slug.'.categories.list',
+                        'data-active-key' => $item->slug . '.categories.list',
                     ];
-
                 }
 
                 $m['submenu'] = $sub_menu;
@@ -347,5 +354,4 @@ Class MenuEngine{
 
         return $items;
     }
-
 }

@@ -20,14 +20,21 @@ class AdminShareData
 
         if(self::$isShare) return $next($request);
         $menu_file = get_web_type();
-        $sidebar_menu = get_admin_menu($menu_file);
+        $sidebar_menu = get_admin_menu('admin');
         add_js_data('crazyweb','get_notice_url', route('admin.notices.get-json'));
         add_js_data('location_data','urls', [
             'region_options' => route("client.location.regions.options"),
             'district_options' => route("client.location.districts.options"),
             'ward_options' => route("client.location.wards.options")
         ]);
-        view()->share(compact('sidebar_menu'));
+        view()->share([
+            'sidebar_menu' => $sidebar_menu,
+            '_component' => 'admin._components.', // blade path to folder contains all of components
+            '_template' => 'admin._templates.',
+            '_pagination' => 'admin._pagination.',
+            '_layout' => 'admin._layouts.',
+            '_base' => 'admin.',
+        ]);
         self::$isShare = true;
             
         return $next($request);

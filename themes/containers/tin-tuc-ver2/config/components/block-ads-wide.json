@@ -1,0 +1,32 @@
+{
+    "name": "Banner quảng cáo (1248 x 130)",
+    "inputs": {
+        "banner": {
+            "type": "file",
+            "label": "Banner"
+        },
+        "link": {
+            "type": "text",
+            "label": "Liên kết"
+        },
+        "text": {
+            "type": "text",
+            "label": "Text"
+        },
+        "type": {
+            "type": "radio",
+            "label": "Loại quảng cáo",
+            "data": {
+                "banner": "Banner",
+                "code": "Mã quảng cáo"
+            },
+            "default": "banner"
+        },
+        "code": {
+            "type": "textarea",
+            "label": "Mã quảng cáo",
+            "placeholder": "Nhập mã quảng cáo"
+        }
+        
+    }
+}

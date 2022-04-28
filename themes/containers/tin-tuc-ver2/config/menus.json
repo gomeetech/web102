@@ -1,0 +1,33 @@
+{
+    "positions": {
+        "topleft": "Top Left",
+        "topright": "Top Right"
+    },
+    "menus": {
+        "topleft": {
+            "name": "Liên hệ",
+            "type": "theme",
+            "depth": 1,
+            "positions": ["topleft"],
+            "items": [
+                {"type": "url", "text": "", "url": "#", "link_class": "faxebook", "icon": "fa fa-facebook"},
+                {"type": "url", "text": "", "url": "#", "link_class": "twitter", "icon": "fa fa-twitter"},
+                {"type": "url", "text": "", "url": "#", "link_class": "youtube", "icon": "fa fa-youtube"},
+                {"type": "url", "text": "", "url": "#", "link_class": "linkedin", "icon": "fa fa-linkedin"},
+                {"type": "url", "text": "", "url": "#", "link_class": "instagram", "icon": "fa fa-instagram"},
+                {"type": "url", "text": "(+84) 945.786.960", "url": "tel:0945786960", "class": "address", "icon": "fa fa-phone"},
+                {"type": "url", "text": "doanln16@gmail.com", "url": "mailto:doanln16@gmail.com", "class": "address", "icon": "fa fa-envelope-o"}
+            ]
+        },
+        "topright": {
+            "name": "Top Right",
+            "type": "theme",
+            "depth": 1,
+            "positions": ["topright"],
+            "items": [
+                {"type": "url", "text": "", "url": "#", "class": "contact", "icon": "fa fa-map-marker fa-i"},
+                {"type": "url", "text": "", "url": "#", "class": "about", "icon": "fa fa-user fa-i"}
+            ]
+        }
+    }
+}

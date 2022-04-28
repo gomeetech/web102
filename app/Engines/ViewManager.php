@@ -23,6 +23,7 @@ class ViewManager
         $siteinfo = siteinfo();
         $ecommerce = ecommerce_setting();
         $payment = $options->settings->payments;
+        $favicons = $options->settings->favicons??new Arr();
         
         $settings = system_setting();
         $helper = new Helper();
@@ -41,7 +42,7 @@ class ViewManager
         ));
         view()->share(array_merge(
             $a,
-            compact('options', 'siteinfo', 'settings', 'ecommerce', 'payment', 'html', 'helper', 'current_url', 'request'), 
+            compact('options', 'siteinfo', 'settings', 'ecommerce', 'payment', 'html', 'helper', 'current_url', 'request', 'favicons'), 
             [
                 '_component' => $d . 'components.',
                 '_template' => $m . 'templates.',

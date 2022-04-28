@@ -1,0 +1,35 @@
+{
+    "label": "Footer",
+    "inputs": {
+        "news_footer": {
+            "type": "area",
+            "label": "footer Widget",
+            "value": "news_footer"
+        },
+        "copyright": {
+            "type": "text",
+            "label": "Copyright"
+        },
+        "facebook": {
+            "type": "text",
+            "label": "Facebook",
+            "placeholder": "Liên kết Facebook"
+        },
+        "twitter": {
+            "type": "text",
+            "label": "Twitter",
+            "placeholder": "Liên kết Twitter"
+        },
+        "linkedin": {
+            "type": "text",
+            "label": "LinkedIn",
+            "placeholder": "Liên kết LinkedIn"
+        },
+        "youtube": {
+            "type": "text",
+            "label": "Youtube",
+            "placeholder": "Liên kết Youtube"
+        }
+        
+    }
+}

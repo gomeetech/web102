@@ -41,6 +41,11 @@
 		{{-- <link rel="stylesheet" href="{{asset('css/custom.min.css')}}" type="text/css"> --}}
 
 
+		@if ($plugin_css = get_html_plugins('css'))
+			@foreach ($plugin_css as $f)
+				@include('admin._plugins.'.$f)
+			@endforeach
+		@endif
 		
 		@yield('css')
 		

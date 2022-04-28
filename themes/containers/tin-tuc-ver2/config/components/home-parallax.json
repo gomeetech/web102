@@ -1,0 +1,26 @@
+{
+    "name": "Home: Giói thiệu (Hình nền và text)",
+    "inputs": {
+        "background": {
+            "type": "file",
+            "label": "Ảnh"
+        },
+        "medium_caption": {
+            "type": "text",
+            "label": "Tiêu đề trên (Tùy chọn)"
+        },
+        "large_caption": {
+            "type": "text",
+            "label": "Tiêu đề chính"
+        },
+        "second_caption": {
+            "type": "text",
+            "label": "Tiêu đề phụ (Tùy chọn)"
+        },
+        "description": {
+            "type": "textarea",
+            "label": "Mô tả ngắn"
+        }
+        
+    }
+}

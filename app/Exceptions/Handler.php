@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Http\Controllers\Admin\General\ErrorController;
+use App\Http\Controllers\Clients\ErrorController as ClientsErrorController;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -74,7 +75,7 @@ class Handler extends ExceptionHandler
                     /**
                      * @var ErrorController
                      */
-                    $errorController = app(ErrorController::class);
+                    $errorController = app(ClientsErrorController::class);
                     if($errorController->checkModuleExists($code)) return response($errorController->reportError($request, $code), $code);
                 }
                 

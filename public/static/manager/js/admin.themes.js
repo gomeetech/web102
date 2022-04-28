@@ -92,7 +92,8 @@ $(function(){
 
         this.active = id => {
             if(parseInt(id) == parseInt(self.current_theme)) return App.Swal.alert("Theme đã được kích hoạt!");
-            ajaxRequest(this.urls.active, "POST", {id:id}, rs => {
+            // console.log(this.urls.active)
+            App.api.post(this.urls.active, {id:id}).then(rs => {
                 if(rs.status){
                     self.current_theme = id;
                     $('.theme-list-body .theme-item .btn-active-theme')
@@ -105,9 +106,11 @@ $(function(){
                         .addClass(self.btnActiveClass)
                         .find('.btn-text')
                         .html(self.btnActiveText);
-                    App.Swal.alert("Đã kích hoạt thành công!");
+                        App.Swal.alert("Đã kích hoạt thành công!");
+                }else{
+                    App.Swal.error(rs && rs.message?rs.message:'Lỗi không xác định');
                 }
-            })
+            }).catch(err => App.Swal.alert(err && err.message?err.message:'Lỗi không xác định! Thử lại sau giây lát'));
         };
 
         /**

@@ -1,0 +1,134 @@
+{
+    "news_footer": [
+        {
+            "component": "footer-column-about",
+            "data": {
+                "title": "Giới thiệu",
+                "show_logo": 1,
+                "show_text_logo": 1
+            }
+        },
+        {
+            "component": "footer-column-posts",
+            "data": {
+                "title": "Tin mới nhất",
+                "post_number": 4
+            }
+        },
+        {
+            "component": "footer-column-posts",
+            "data": {
+                "title": "Ngẫu nhiên",
+                "post_number": 4,
+                "shorttype": "rand()"
+            }
+        },
+        {
+            "component": "footer-column-tags",
+            "data": {
+                "title": "Tags",
+                "tag_number": 16,
+                "shorttype": "popuular"
+            }
+        }
+    ],
+    "home": [
+        {
+            "component": "home-breaking-and-slider",
+            "data": {
+                "slider_sort_type": 1,
+                "slider_number_post": 16
+            }
+        },
+        {
+            "component": "home-grid-list",
+            "data": {
+                "title": "Tin tức",
+                "sub_title": "nổi bật",
+                "bg_style": "default",
+                "sorttype": "rand()",
+                "post_number": 4
+            }
+        },
+        {
+            "component": "home-list-sidebar",
+            "data": {
+                "title": "Tin tức",
+                "sub_title": "mới nhất",
+                "bg_style": 4,
+                "sorttype": 1,
+                "post_number": 5,
+                "sidebar_title": "Tin mới nhất",
+                "sidebar_post_number": 20
+            }
+        },
+        {
+            "component": "home-videos",
+            "data": {
+                "title": "Video",
+                "sorttype": 1,
+                "post_number": 3
+            }
+        }
+    ],
+    "news_sidebar": [
+        {
+            "component": "sidebar-ads",
+            "data": {}
+        },
+        {
+            "component": "sidebar-post-list-1",
+            "data": {
+                "title": "Tin mới",
+                "sorttype": 1,
+                "post_number": 20
+            }
+        },
+        {
+            "component": "sidebar-calendar",
+            "data": {
+                "title": "Lịch",
+                "lang": "vi"
+            }
+        },
+        {
+            "component": "sidebar-weather",
+            "data": {
+                "title": "Thời tiết",
+                "scale": "C",
+                "lat": "",
+                "long": ""
+            }
+        },
+        {
+            "component": "sidebar-newsletter",
+            "data": {
+                "title": "Dăng ký nhận tin",
+                "placeholder": "Ví dụ: Nhập email của bạn",
+                "button": "Nút đăng ký"
+            }
+        },
+        {
+            "component": "sidebar-socials",
+            "data": {
+                "title": "Kết nối với chúng tôi",
+                "facebook": "#",
+                "twitter": "#",
+                "youtube": "#",
+                "instagram": "#"
+            }
+        }
+    ],
+    "single_post": [
+        {
+            "component": "single-related",
+            "data": {
+                "post_number": 3
+            }
+        },
+        {
+            "component": "block-ads-wide",
+            "data": {}
+        }
+    ]
+}

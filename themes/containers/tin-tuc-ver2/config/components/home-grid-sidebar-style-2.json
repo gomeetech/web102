@@ -1,0 +1,94 @@
+{
+    "name": "Home: Lưới & sidebar (style 2)",
+    "inputs": {
+        "first_title": {
+            "type": "text",
+            "label": "Tiêu đề của mục 1 (Tùy chọn)"
+        },
+        "first_sub_title": {
+            "type": "text",
+            "label": "Tiêu đề phụ (Tùy chọn)"
+        },
+        "first_bg_style": {
+            "type": "crazyselect",
+            "label": "Nền tiêu đề của mục 1",
+            "call": "get_number_options",
+            "params": [1, 12]
+        },
+        "first_dynamic_id": {
+            "type": "crazyselect",
+            "label": "Kênh đăng bài của mục 1 (tùy chọn)",
+            "template": "crazyselect",
+            "call": "get_dynamic_options",
+            "params": [[], "Chọn một"],
+            "@change": "Crazy.posts.changeDynamicID",
+            "data-ref": "first_category_id",
+            "required": "true"
+        },
+        "first_category_id": {
+            "type": "crazyselect",
+            "label": "Chủ đề của mục 1",
+            "template": "crazyselect",
+            "call": "get_post_category_options",
+            "params": [
+                {
+                    "dynamic_id": "#first_dynamic_id"
+                },
+                true
+            ],
+            "@label-type": "value"
+        },
+        "first_sorttype": {
+            "type": "select",
+            "label": "kiểu sắp xếp của mục 1 ",
+            "call": "get_post_sortby_options"
+        },
+        
+
+
+
+        "second_title": {
+            "type": "text",
+            "label": "Tiêu đề của mục 2 (Tùy chọn)"
+        },
+        "second_sub_title": {
+            "type": "text",
+            "label": "Tiêu đề phụ (Tùy chọn)"
+        },
+        "second_bg_style": {
+            "type": "crazyselect",
+            "label": "Nền tiêu đề của mục 2",
+            "call": "get_number_options",
+            "params": [1, 12]
+        },
+        "second_dynamic_id": {
+            "type": "crazyselect",
+            "label": "Kênh đăng bài của mục 2 (tùy chọn)",
+            "template": "crazyselect",
+            "call": "get_dynamic_options",
+            "params": [[], "Chọn một"],
+            "@change": "Crazy.posts.changeDynamicID",
+            "data-ref": "second_category_id",
+            "required": "true"
+        },
+        "second_category_id": {
+            "type": "crazyselect",
+            "label": "Chủ đề của mục 2",
+            "template": "crazyselect",
+            "call": "get_post_category_options",
+            "params": [
+                {
+                    "dynamic_id": "#second_dynamic_id"
+                },
+                true
+            ],
+            "@label-type": "value"
+        },
+        "second_sorttype": {
+            "type": "select",
+            "label": "kiểu sắp xếp của mục 2 ",
+            "call": "get_post_sortby_options"
+        }
+
+    }
+}

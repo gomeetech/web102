@@ -123,7 +123,7 @@ class ThemeController extends AdminController
         else{
             $data->remove('zip');
         }
-        $this->uploadImageAttachFile($request, $data, 'image', 'static/themes');
+        $this->uploadImageAttachFile($request, $data, 'image', 'static/resources/themes');
     }
 
     /**
@@ -139,9 +139,10 @@ class ThemeController extends AdminController
         if($request->id == $result->id){
             $this->fileRepository->deleteRefFileIgnoreList('theme', $result->id, is_array($request->gallery_ids)?$request->gallery_ids:[]);
         }
-        if($request->gallery_data){
-            $this->fileRepository->saveBase64List($request->gallery_data, 'theme', $result->id, $request->user()->id);
-        }
+        // if($request->gallery_data){
+        //     $this->fileRepository->saveBase64List($request->gallery_data, 'theme', $result->id, $request->user()->id);
+        // }
+        $this->extract($request, $result->id);
     }
 
     /**
@@ -165,6 +166,57 @@ class ThemeController extends AdminController
             }
         }
     }
+
+    
+
+    /**
+     * giải nén file
+     * @param Request $request
+     *
+     * @return reponse
+     */
+    public function extract(Request $request, $id = null)
+    {
+        extract($this->apiDefaultData);
+        $id = $id?$id:$request->id;
+        if(!$id || !($theme = $this->repository->findBy($this->primaryKeyName, $id)) || !($filemanager = $this->getFilemanager($this->themeZipDir)))
+        {
+            $message = "Theme không tồn tại hoặc đã bị xóa. Vui lòng kiểm tra lại!";
+        }
+        elseif(!$filemanager->extract($theme->zip, $themeDir = base_path('themes/containers/'.$theme->slug)))
+        {
+            $message = "Giải nén không thành công! Vui lòng thử lại sau giây lát.";
+        }
+        elseif(!is_dir($assets = $themeDir . '/assets') || !is_dir($views = $themeDir . '/views'))
+        {
+            $filemanager->delete($themeDir);
+            $message = "Cấu trúc thư mục không hợp lệ";
+        }
+        elseif(!$filemanager->copyFolder($assets, public_path('static/assets/'.$theme->slug)) || !$filemanager->copyFolder($views, resource_path('views/clients/'.$theme->secret_id)))
+        {
+            $filemanager->delete($themeDir);
+            $message = "Lỗi không thể cài đặt theme";
+        }
+        elseif(!$theme->available && !$this->repository->update($theme->id, ['available' => 1]))
+        {
+            $message = "Không thể cập nhật trạng thái có thể sử dụng!";
+        }
+        else
+        {
+            $this->repository->createMetaData($request->id);
+            $status = true;
+            $message = "Đã giải nén thảnh công!";
+            $filemanager->delete($assets);
+            $filemanager->delete($views);
+            // $filemanager->delete($themeDir.'/config');
+            // $filemanager->delete($themeDir.'/components');
+
+
+
+        }
+        return $this->json(compact(...$this->apiSystemVars));
+    }
+
 
 
 

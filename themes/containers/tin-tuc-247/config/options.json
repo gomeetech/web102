@@ -1,0 +1,37 @@
+{
+    "title": "demo options",
+    "groups": {
+        "styling": {
+            "label": "Styling",
+            "file": "styling.json"
+        },
+        "header": {
+            "label": "Header",
+            "file": "header.json"
+        },
+        "footer": {
+            "label": "Footer",
+            "file": "footer.json"
+        },
+        "sidebar": {
+            "label": "Sidebar",
+            "file": "sidebar.json"
+        },
+        "home": {
+            "label": "Trang chủ",
+            "file": "home.json"
+        },
+        "contacts": {
+            "label": "Liên hệ",
+            "file": "contacts.json"
+        },
+        "single": {
+            "label": "Chi tiết tin",
+            "file": "single.json"
+        },
+        "page": {
+            "label": "Chi tiết page",
+            "file": "page.json"
+        }
+    }
+}

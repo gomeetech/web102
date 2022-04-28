@@ -1,0 +1,26 @@
+{
+    "name": "Breaking news & Slider",
+    "inputs": {
+        "slider_sort_type": {
+            "type": "crazyselect",
+            "label": "Kiểu sắp xếp tin trong phần slider news",
+            "call": "get_post_sortby_options",
+            "default": 1
+        },
+        "slider_number_post": {
+            "type": "crazyswlect",
+            "label": "Số lượng tin trong phần slider news",
+            "data":{
+                "4": "4 Tin (1 slider)",
+                "8": "8 Tin (2 slider)",
+                "12": "12 Tin (3 slider)",
+                "16": "16 Tin (4 slider)",
+                "20": "20 Tin (5 slider)"
+                
+            },
+
+            "default": 16
+        }
+        
+    }
+}

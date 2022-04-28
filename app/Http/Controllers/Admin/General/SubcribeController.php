@@ -14,6 +14,8 @@ class SubcribeController extends AdminController
     protected $moduleName = 'Đăng ký theo dõi';
 
     
+
+    protected $flashMode = true;
     /**
      * Create a new controller instance.
      *

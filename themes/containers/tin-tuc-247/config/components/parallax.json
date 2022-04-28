@@ -1,0 +1,27 @@
+{
+    "name": "Home: Parallax",
+    "inputs": {
+        "sub_title_before": {
+            "type": "text",
+            "label": "Tiêu đề nhỏ (tùy chọn)"
+        },
+        "title": {
+            "type": "text",
+            "label": "Tiêu đề chính"
+        },
+        "sub_title_after": {
+            "type": "text",
+            "label": "Tiêu đề phụ (tùy chọn)"
+        },
+        "description": {
+            "type": "textarea",
+            "label": "Mô tả",
+            "placeholder": "Viết gì đó"
+        },
+        "background":{
+            "type": "file",
+            "label": "Hình nền (Tùy chọn)"
+        }
+        
+    }
+}
