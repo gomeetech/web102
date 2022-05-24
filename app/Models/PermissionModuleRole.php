@@ -13,12 +13,12 @@ class PermissionModuleRole extends Model
 
     public function role()
     {
-        return $this->belongsTo('App\\Models\\PermissionRole','role_id','id');
+        return $this->belongsTo(PermissionRole::class,'role_id','id');
     }
 
     public function module()
     {
-        return $this->belongsTo('App\\Models\\PermissionModule','module_id','id');
+        return $this->belongsTo(PermissionModule::class,'module_id','id');
     }
 
 }

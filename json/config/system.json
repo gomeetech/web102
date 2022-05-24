@@ -11,7 +11,7 @@
         "vcc.vn"
     ],
     "web_modules": {
-        "base":["pages", "dynamics", "files", "forms","tags", "contacts", "comments", "subcribes", "sliders","menus", "settings", "embeds", "themes", "components", "account"],
+        "base":["pages", "dynamics", "files", "forms","tags", "contacts", "comments", "subscribes", "sliders","menus", "settings", "embeds", "themes", "components", "account"],
         "default": [
             "users", "permissions","crawlers"
         ],
@@ -33,82 +33,6 @@
         "vcchosting": [
             "filemanager", "database", "domain"
         ]
-    },
-    "package_modules": {
-        "base":["pages", "dynamics", "files", "forms","tags", "contacts", "comments", "subcribes", "sliders","menus", "settings", "embeds", "themes", "components", "account"],
-        "default": {
-            "demo": [],
-            "pro":[
-                "users", "permissions","crawlers"
-            ],
-            "max": [
-                "users", "permissions","crawlers"
-            ]
-        },
-        "news": {
-            "demo": [],
-            "pro":[
-                "users", "permissions","crawlers"
-            ],
-            "max": [
-                "users", "permissions","crawlers"
-            ]
-        },
-        "ecommerce": {
-            "demo": [
-                "users","products","promos","orders","customers","transactions", "payments"
-            ],
-            "pro":[
-                "users","permissions","products","promos","orders","customers","transactions", "payments", "bookings"
-            ],
-            "max": [
-                "users","permissions","products","promos","orders","customers","transactions","crawlers", "affiliates", "payments", "bookings"
-            ]
-        },
-        "personal": {
-            "demo": [
-                "profile", "skills", "works", "organizations","academics", "experiences", "education", "projects", "clients", "feedback", "testimonials"
-            ],
-            "pro":[
-                "profile", "skills", "works", "organizations","academics", "experiences", "education", "projects", "clients", "feedback", "testimonials"
-            ],
-            "max": [
-                "profile", "skills", "works", "organizations","academics", "experiences", "education", "projects", "clients", "feedback", "testimonials"
-            ]
-        },
-        "business": {
-            "demo": [
-                "projects"
-            ],
-            "pro":[
-                "users", "permissions", "projects", "clients", "feedback", "teams", "testimonials"
-            ],
-            "max": [
-                "users", "permissions", "projects", "clients", "feedback", "teams", "testimonials"
-            ]
-        },
-        "wordpress": {
-            "demo": [
-                "filemanager", "domain"
-            ],
-            "pro":[
-                "filemanager", "database", "domain", "config"
-            ],
-            "max": [
-                "filemanager", "database", "domain", "config"
-            ]
-        },
-        "vcchosting": {
-            "demo": [
-                "filemanager", "database", "domain"
-            ],
-            "pro":[
-                "filemanager", "database", "domain"
-            ],
-            "max": [
-                "filemanager", "database", "domain"
-            ]
-        }
     },
     "times": {
         "start": "1900-01-01",

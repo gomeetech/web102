@@ -79,6 +79,6 @@
             }
         },
         "custom":["posts"],
-        "@module": ["crawler", "contacts", "subcribes", "themes", "settings"]
+        "@module": ["crawler", "contacts", "subscribes", "themes", "settings"]
     }
 }

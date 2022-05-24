@@ -5,7 +5,7 @@ use App\Http\Controllers\Clients\ContactController;
 use App\Http\Controllers\Clients\LocationController;
 use App\Http\Controllers\Clients\PWAController;
 use App\Http\Controllers\Clients\SearchController;
-use App\Http\Controllers\Clients\SubcribeController;
+use App\Http\Controllers\Clients\SubscribeController;
 use App\Http\Controllers\Clients\ThemeController;
 use App\Http\Controllers\Clients\VisitorController;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +36,11 @@ Route::post('gui-lien-he',                          [$c, 'sendContact'])->name('
 Route::post('gui-lien-he-bang-ajax',                [$c, 'ajaxSend'])->name('contacts.ajax-send');
 
 // contact
-$c = SubcribeController::class;
-Route::post('dang-ky-theo-doi',                     [$c, 'save'])->name('subcribe');
+$c = SubscribeController::class;
+Route::post('subcribe',                             [$c, 'save'])->name('subcribe');
 Route::post('subcribe',                             [$c, 'ajaxSave'])->name('ajax-subcribe');
+Route::post('dang-ky-theo-doi',                     [$c, 'save'])->name('subscribe');
+Route::post('subscribe',                            [$c, 'ajaxSave'])->name('ajax-subscribe');
 
 $c = ThemeController::class;
 Route::get('themes/preview',                        [$c, 'preview'])->name('themes.preview');

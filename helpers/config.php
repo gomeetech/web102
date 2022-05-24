@@ -331,13 +331,13 @@ if(!function_exists('get_web_module_list')){
      * @return array
      */
     function get_web_module_list($web_type = 'default'){
-        $module_list = get_system_config('package_modules');
+        $module_list = get_system_config('web_modules');
         $base = $module_list['base'];
 
         $modules = [];
-        $package_type = web_setting('package_type', 'demo');
-        if(isset($module_list[$web_type]) && isset($module_list[$web_type][$package_type])){
-            $modules = $module_list[$web_type][$package_type];
+        // $package_type = web_setting('package_type', 'demo');
+        if(isset($module_list[$web_type])){
+            $modules = $module_list[$web_type];
         }
         return array_merge($base, $modules);
     }

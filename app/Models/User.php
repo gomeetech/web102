@@ -13,7 +13,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, ModelEventMethods, ModelFileMethods;
+    const MODEL_TYPE = 'default';
 
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -63,6 +65,30 @@ class User extends Authenticatable
 
     protected $_meta = [];
     protected $_roles = [];
+    /**
+     * các giá trị mặc định
+     *
+     * @var array
+     */
+    protected $defaultValues = [];
+
+    
+    public function __getModelType__()
+    {
+        return static::MODEL_TYPE;
+    }
+
+
+    /**
+     * lấy về giá trị mặc định khi muốn fill để create data
+     *
+     * @return array<string, mixed>
+     */
+    public function getDefaultValues()
+    {
+        return $this->defaultValues;
+    }
+    
     
     public function setGoogle2faSecretAttribute($value)
     {

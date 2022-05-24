@@ -2,6 +2,7 @@
 /**
  * load tat ca cac file helper
  */
+require_once 'constants.php';
 require_once 'config.php';
 require_once 'theme.php';
 require_once 'view.php';

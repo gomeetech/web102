@@ -95,7 +95,7 @@
         "@module": [
             "comments",
             "contacts",
-            "subcribes"
+            "subscribes"
         ]
     }
 }
