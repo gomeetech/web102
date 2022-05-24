@@ -19,7 +19,7 @@ $wrapper->removeClass()->addClass("m-checkbox-{$listType} checklist attribute-".
 $wrapper->name = null;
 $wrapper->type = null;
 $wrapper->placehoder = null;
-$wrapper->id = 'attribute-'.$wrapper->data('attribute-name'). '-wrapper';
+$wrapper->{MODEL_PRIMARY_KEY} = 'attribute-'.$wrapper->data('attribute-name'). '-wrapper';
 
 
 ?>
@@ -38,7 +38,7 @@ $wrapper->id = 'attribute-'.$wrapper->data('attribute-name'). '-wrapper';
                 type="checkbox" 
                 class="attr-checkbox" 
                 name="{{$input->name}}" 
-                id="{{$input->id.'-'.str_slug($value)}}" 
+                id="{{$input->{MODEL_PRIMARY_KEY}.'-'.str_slug($value)}}" 
                 value="{{$value}}" 
                 @if(in_array($value, $disable)) disabled="true" @endif 
                 @if(in_array($value, $defaultValues)) checked @endif> 
@@ -66,7 +66,7 @@ $wrapper->id = 'attribute-'.$wrapper->data('attribute-name'). '-wrapper';
             type="checkbox" 
             class="attr-checkbox" 
             name="{{$input->name}}" 
-            id="{{$input->id.'-'}}{$value}" 
+            id="{{$input->{MODEL_PRIMARY_KEY}.'-'}}{$value}" 
             value="{$value}"> 
         {$text}
         <span></span>

@@ -6,7 +6,7 @@
     <div class="custom-file">
         <?php $input->addClass('custom-file-input'); ?>
         {!! $input !!}
-        <label class="custom-file-label selected" for="{{$input->id}}">{{$input->val()?$input->val():'Chưa có file nào dc chọn'}}</label>
+        <label class="custom-file-label selected" for="{{ $input->{MODEL_PRIMARY_KEY} }}">{{$input->val()?$input->val():'Chưa có file nào dc chọn'}}</label>
     </div>
 @elseif(in_array($type, ['checkbox', 'radio', 'checklist']))
     

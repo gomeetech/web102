@@ -24,7 +24,7 @@
 		<!--RTL version:<link href="{{asset('static/manager/assets/demo/default/base/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />-->
 
 		<!--end::Base Styles -->
-        <link rel="shortcut icon" href="{{siteinfo('favicon', asset('static/manager/assets/demo/default/media/img/logo/favicon.ico'))}}" />
+        {{-- <link rel="shortcut icon" href="{{siteinfo('favicon', asset('static/manager/assets/demo/default/media/img/logo/favicon.ico'))}}" /> --}}
         
 		<!-- my css -->
 

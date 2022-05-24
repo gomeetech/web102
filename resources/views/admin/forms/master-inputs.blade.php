@@ -127,8 +127,8 @@ $input_addons = ['checkbox'];
     @if ($input->type=='hidden')
         {!! $input !!}
     @else
-        <div class="mt-1 mb-4 crazy-form-group {{$g_class}} {{$input->error?'has-danger':''}}" id="{{$input->id}}-form-group">
-            <label class="{{$l_class}}" for="{{$input->id}}" >
+        <div class="mt-1 mb-4 crazy-form-group {{$g_class}} {{$input->error?'has-danger':''}}" id="{{$input->{MODEL_PRIMARY_KEY} }}-form-group">
+            <label class="{{$l_class}}" for="{{$input->{MODEL_PRIMARY_KEY} }}" >
                 {!!$input->label!!}
                 @if ($input->required && !in_array($input->required, ["0", "false"]))
                 <span class="m-badge m-badge--danger m-badge--dot"></span>
@@ -138,7 +138,7 @@ $input_addons = ['checkbox'];
             <div class="{{$w_class}}">
 
                 <?php
-                    $is_template = is_support_template($input->template, $type);
+                    $is_template = is_support_template($input->template, $type, $_base.'form.templates.');
                     $addon_class = '';
                     if($is_template){
                         if($input->template == 'touchspin') $addon_class.= 'bootstrap-touchspin ';
@@ -155,13 +155,13 @@ $input_addons = ['checkbox'];
                             @foreach ($input->prependColumns as $addon)
                             <?php 
                             if($addon->error){
-                                set_web_data($input->id. '-error', $addon->error);
+                                set_web_data($input->{MODEL_PRIMARY_KEY}. '-error', $addon->error);
                             }
                             ?>
                                 <div class="col-md">
                                     @if (in_array($addon->type, $input_addons))
                                         @include($_base.'forms.addons.'.$addon->type, ['input'=>$addon])
-                                    @elseif(is_support_template($addon->template, $addon->type))
+                                    @elseif(is_support_template($addon->template, $addon->type, $_base.'form.templates.'))
                                         @include($_base.'forms.templates.'.$addon->template, ['input'=>$addon])
                                     @else
                                         {!! $addon !!}
@@ -186,13 +186,13 @@ $input_addons = ['checkbox'];
                         @foreach ($input->appendColumns as $addon)
                             <?php 
                             if($addon->error){
-                                set_web_data($input->id. '-error', $addon->error);
+                                set_web_data($input->{MODEL_PRIMARY_KEY}. '-error', $addon->error);
                             }
                             ?>
                             <div class="col-md">
                                 @if (in_array($addon->type, $input_addons))
                                     @include($_base.'forms.addons.'.$addon->type, ['input'=>$addon])
-                                @elseif(is_support_template($addon->template, $addon->type))
+                                @elseif(is_support_template($addon->template, $addon->type, $_base.'form.templates.'))
                                     @include($_base.'forms.templates.'.$addon->template, ['input'=>$addon])
                                 @else
                                     {!! $addon !!}
@@ -202,7 +202,7 @@ $input_addons = ['checkbox'];
                     @endif
                     </div>
                 @endif
-                <div class="form-control-feedback input-message-alert" id="input-{!! $input->id !!}-message-alert">{{$input->error??(get_web_data($input->id.'-error')??$input->hiddenData('note'))}}</div>
+                <div class="form-control-feedback input-message-alert" id="input-{!! $input->{MODEL_PRIMARY_KEY} !!}-message-alert">{{$input->error??(get_web_data($input->{MODEL_PRIMARY_KEY}.'-error')??$input->hiddenData('note'))}}</div>
 
             </div>
             {{-- end input group --}}

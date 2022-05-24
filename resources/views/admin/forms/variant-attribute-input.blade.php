@@ -1,7 +1,7 @@
 <?php
 $attrInput = html_input($params);
 $name = $attrInput->name;
-$attrInput->id = $root_name.'-'.$attrInput->name.'-'.$attrInput->id;
+$attrInput->{MODEL_PRIMARY_KEY} = $root_name.'-'.$attrInput->name.'-'.$attrInput->{MODEL_PRIMARY_KEY};
 $attrInput->name = $root_name.'['.$attrInput->name.']';
 $ns = $attrInput->nameToNamespace();
 if($errors->has($ns)){
@@ -23,20 +23,20 @@ if($attrInput->type=='number'){
 $avt = $attrInput->hiddenData('advance_value_type');
 ?>
 
-<div class="mt-1 mb-4 crazy-form-group row scope-{{$attrInput->hiddenData('scope')}} {{$attrInput->error?'has-danger':''}}" id="{{$attrInput->id}}-form-group">
-    <label class="col-12 col-sm-4 col-md-3 col-form-label" for="{{$attrInput->id}}" >
+<div class="mt-1 mb-4 crazy-form-group row scope-{{$attrInput->hiddenData('scope')}} {{$attrInput->error?'has-danger':''}}" id="{{$attrInput->{MODEL_PRIMARY_KEY} }}-form-group">
+    <label class="col-12 col-sm-4 col-md-3 col-form-label" for="{{$attrInput->{MODEL_PRIMARY_KEY} }}" >
         {{$attrInput->label}}
     </label>
     <div class="{{$col_class}}">
 
         <?php
-            $is_template = is_support_template($attrInput->template, $attrInput->type);
+            $is_template = is_support_template($attrInput->template, $attrInput->type, $_base.'form.templates.');
             $dig = $attrInput->data('input-group');
             $input_group_class = ($attrInput->prepend_text || $attrInput->append_text || ($dig && $dig!='false') || $attrInput->type == 'select')?'input-group':'';
         ?>
 
 
-        <div class="{{$input_group_class}}" id="attr-input-{!! $attrInput->id !!}-group">
+        <div class="{{$input_group_class}}" id="attr-input-{!! $attrInput->{MODEL_PRIMARY_KEY} !!}-group">
             {{-- nếu có tempplate và (kieu attrInput phai bang hoac nam trong danh sach cua tem plate do) --}}
             @if($is_template)
             @include($_base.'forms.templates.attribute-'.$attrInput->template, ['input' => $attrInput])
@@ -54,7 +54,7 @@ $avt = $attrInput->hiddenData('advance_value_type');
             @endif
 
         </div>
-        <div class="form-control-feedback input-message-alert" id="input-{!! $attrInput->id !!}-message-alert">{{$attrInput->error}}</div>
+        <div class="form-control-feedback input-message-alert" id="input-{!! $attrInput->{MODEL_PRIMARY_KEY} !!}-message-alert">{{$attrInput->error}}</div>
 
     </div>
     <div class="text-right {{$default_class}}">

@@ -6,7 +6,7 @@ $h = $input->data('height');
 $width = $w?$w:300;
 $height = $h?$h:300;
 add_custom_css(
-    "#$input->id-editor-wrapper .cropit-editor", 
+    "#".$input->{MODEL_PRIMARY_KEY}."-editor-wrapper .cropit-editor", 
     [
         'width' => $width.'px',
         'height' => ($height+40).'px',
@@ -14,13 +14,13 @@ add_custom_css(
     ]
 );
 add_custom_css(
-    "#$input->id-editor-wrapper .cropit-preview", 
+    "#".$input->{MODEL_PRIMARY_KEY}."-editor-wrapper .cropit-preview", 
     [
         'width' => $width.'px',
         'height' => $height.'px',
     ]
 );
-add_custom_css("#$input->id-editor-wrapper .addons, #$input->id-editor-wrapper .keep-original", [
+add_custom_css("#".$input->{MODEL_PRIMARY_KEY}."-editor-wrapper .addons, #".$input->{MODEL_PRIMARY_KEY}."-editor-wrapper .keep-original", [
     'width' => $width.'px',
     'margin' => '10px auto'
 ]);
@@ -30,13 +30,13 @@ add_js_src('static/plugins/cropit/cropit.js');
 
 add_js_data('cropit_data', [
     [
-        'selector' => "#$input->id-editor-wrapper",
+        'selector' => "#".$input->{MODEL_PRIMARY_KEY}."-editor-wrapper",
         'image' => $input->val()?$input->val():asset('static/images/default/no-image.png')
     ]
 ]);
 ?>
 
-<div id="{{$input->id}}-editor-wrapper" class="m-auto">
+<div id="{{$input->{MODEL_PRIMARY_KEY} }}-editor-wrapper" class="m-auto">
     <div class="select-file cropit-editor">
         <div class="cropit-preview"></div>
         

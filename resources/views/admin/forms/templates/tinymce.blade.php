@@ -6,7 +6,7 @@ use Gomee\Helpers\Arr;
 
 add_js_src('static/plugins/tinymce/tinymce.min.js');
 add_js_src('static/plugins/tinymce/jquery.tinymce.min.js');
-add_js_src('static/plugins/tinymce/gallery.js');
+// add_js_src('static/plugins/tinymce/gallery.js');
 
 
 
@@ -48,7 +48,7 @@ add_js_src('static/plugins/codemirror/addon/edit/matchbrackets.js');
 
 
 add_js_src('static/manager/js/tinymce.js');
-set_admin_template_data('modals', 'modal-library');
+// set_admin_template_data('modals', 'modal-library');
 
 
 $input->addClass("tiny-mce");
@@ -60,13 +60,13 @@ $input->type="textarea";
 
 
 
-<div id="{!! $input->id.'-tabs' !!}" class="tiny-mce-wrapper">
+<div id="{!! $input->{MODEL_PRIMARY_KEY}.'-tabs' !!}" class="tiny-mce-wrapper">
     <ul class="nav nav-tabs justify-content-end" role="tablist">
         <li class="nav-item m-tabs__item mr-auto">
-            <a class="btn btn-sm btn-secondary btn-insert-gallery" href="javascript:void(0)">
+            {{-- <a class="btn btn-sm btn-secondary btn-insert-gallery" href="javascript:void(0)">
                 <i class="fa fa-images mr-3"></i>
                     Thư viện
-            </a>
+            </a> --}}
         </li>
         <li class="nav-item m-tabs__item">
             <a class="nav-link m-tabs__link active" data-toggle="tab" href="#editor_tab" role="tab">
@@ -92,7 +92,7 @@ $input->type="textarea";
         <div class="tab-pane" id="code_tab" role="tabpanel">
             {{-- @php
                 $input->className = 'code-editor';
-                $input->id.='-code';
+                $input->{MODEL_PRIMARY_KEY}.='-code';
                 $input->name.='_code';
             @endphp
             {!! $input !!} --}}

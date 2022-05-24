@@ -4,7 +4,7 @@ $baseName = $input->name;
 $wrapper = $input->copy();
 $wrapper->removeClass(['form-control', 'm-input']);
 $wrapper->type = null;
-$wrapper->id = $baseName.'-wrapper-block';
+$wrapper->{MODEL_PRIMARY_KEY} = $baseName.'-wrapper-block';
 $wrapper->prepareCrazyInput();
 
 

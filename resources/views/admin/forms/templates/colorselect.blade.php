@@ -9,7 +9,7 @@ $wrapper->removeClass()->addClass("color-select");
 $wrapper->name = null;
 $wrapper->type = null;
 $wrapper->placehoder = null;
-$wrapper->id = $wrapper->id. '-wrapper';
+$wrapper->{MODEL_PRIMARY_KEY} = $wrapper->{MODEL_PRIMARY_KEY}. '-wrapper';
 
 ?>
 

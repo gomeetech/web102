@@ -17,7 +17,7 @@ $file = ($input->value && $f = get_media_file(['id' => $input->value])) ? $f : c
 <div class="input-media" data-type="{{$type}}">
     
     <div class="input-group">
-        <input type="hidden" name="{{$input->name}}" id="{{$input->id?$input->id:$input->name}}" value="{{$input->value}}" class="media-input-hidden">
+        <input type="hidden" name="{{$input->name}}" id="{{$input->{MODEL_PRIMARY_KEY}?$input->{MODEL_PRIMARY_KEY}:$input->name}}" value="{{$input->value}}" class="media-input-hidden">
         <div class="input-group-prepend">
             <img src="{{$file->thumbnail}}" alt="{{$file->filename}}" class="media-image-thumbnail">
         </div>

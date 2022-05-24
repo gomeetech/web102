@@ -8,7 +8,7 @@
 
     <?php    
         set_web_data('has_component_area', true);
-        add_js_data('nestable_selectors', '#component-area-'.$area->id);
+        add_js_data('nestable_selectors', '#component-area-'.$area->{MODEL_PRIMARY_KEY});
         $title_by = $input->hiddenData('title-by');
         
         $renderComponents = function($components, $render = null) use($title_by){
@@ -18,13 +18,13 @@
                     $data = $component->data;
                     $html.= '
                     
-                    <li class="dd-item" data-id="'.$component->id.'">
+                    <li class="dd-item" data-id="'.$component->{MODEL_PRIMARY_KEY}.'">
                                                         
                         <div class="item-actions">
-                            <a href="javascript:void(0);" class="edit btn-edit-item" data-id="'.$component->id.'" data-area-id="'.$component->area_id.'">
+                            <a href="javascript:void(0);" class="edit btn-edit-item" data-id="'.$component->{MODEL_PRIMARY_KEY}.'" data-area-id="'.$component->area_id.'">
                                 <i class="fa fa-pencil-alt"></i>
                             </a>
-                            <a href="javascript:void(0);" class="remove btn-delete-item" data-id="'.$component->id.'" data-area-id="'.$component->area_id.'" data-label="'.$component->label.'">
+                            <a href="javascript:void(0);" class="remove btn-delete-item" data-id="'.$component->{MODEL_PRIMARY_KEY}.'" data-area-id="'.$component->area_id.'" data-label="'.$component->label.'">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </div>
@@ -41,7 +41,7 @@
     ?>
     
 <div class="m-area__content">
-    <div class="dd nestable component-list-body" id="component-area-{{$area->id}}" data-area-id="{{$area->id}}" data-title-by="{{$title_by}}" data-max-depth="10" data-callback="App.components.sortCallback">
+    <div class="dd nestable component-list-body" id="component-area-{{$area->{MODEL_PRIMARY_KEY} }}" data-area-id="{{$area->{MODEL_PRIMARY_KEY} }}" data-title-by="{{$title_by}}" data-max-depth="10" data-callback="App.components.sortCallback">
         <ol class="dd-list">
 
             @if(count($area->components))
@@ -52,7 +52,7 @@
     </div>
 
     <div class="text-center">
-        <a href="javascript:void(0)" data-area-id="{{$area->id}}" data-toggle="m-tooltip" data-placement="top" title data-original-title="Thêm component" class="btn btn-outline-info btn-add-component btn-sm btn-block"><i class="fa fa-plus"></i> Thêm</a>
+        <a href="javascript:void(0)" data-area-id="{{$area->{MODEL_PRIMARY_KEY} }}" data-toggle="m-tooltip" data-placement="top" title data-original-title="Thêm component" class="btn btn-outline-info btn-add-component btn-sm btn-block"><i class="fa fa-plus"></i> Thêm</a>
     </div>
 </div>
 

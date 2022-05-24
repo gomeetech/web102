@@ -2,7 +2,7 @@
 <?php
 $input->type='text';
 $input->addClass('inp-time');
-add_js_data('timepicker_selectors', '#'.$input->id);
+add_js_data('timepicker_selectors', '#'.$input->{MODEL_PRIMARY_KEY});
 $input->autocomplete = "off";
 $input_group_class = ($input->prependGroup || $input->prepend_text || $input->append_text || $input->appendGroup || ($dig && $dig!='false'))?'':'input-group';
 ?>

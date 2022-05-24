@@ -20,15 +20,15 @@ if(!$select_type){
 }
 
 
-$input->data('id', $input->id);
+$input->data('id', $input->{MODEL_PRIMARY_KEY});
 ?>
 
-    <input type="hidden" name="{{$input->name}}" value="{{($def?$def[0]:'')}}" id="{{$input->id}}" />
+    <input type="hidden" name="{{$input->name}}" value="{{($def?$def[0]:'')}}" id="{{$input->{MODEL_PRIMARY_KEY} }}" />
 
     <?php 
-    $id = $input->id;
+    $id = $input->{MODEL_PRIMARY_KEY};
     $input->tagName = 'div'; 
-    $input->id .= '-wrapper';
+    $input->{MODEL_PRIMARY_KEY} .= '-wrapper';
     $input->addClass("dropdown crazy-select $select_type");
     ?>
     <div {!! $input->attrsToStr() !!} >

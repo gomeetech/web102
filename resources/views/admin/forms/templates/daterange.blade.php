@@ -3,7 +3,7 @@ $input->type='text';
 $input->addClass('inp-daterange');
 $input->attr('readonly',true);
 
-add_js_data('daterange_selectors', '#'.$input->id .'-form-group .input-group');
+add_js_data('daterange_selectors', '#'.$input->{MODEL_PRIMARY_KEY} .'-form-group .input-group');
 ?>
     <div class="input-group">
     

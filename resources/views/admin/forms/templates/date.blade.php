@@ -2,7 +2,7 @@
 <?php
 $input->type='text';
 $input->addClass('inp-date');
-add_js_data('datepicker_selectors', '#'.$input->id);
+add_js_data('datepicker_selectors', '#'.$input->{MODEL_PRIMARY_KEY});
 $input->autocomplete = "off";
 $input_group_class = ($input->prependGroup || $input->prepend_text || $input->append_text || $input->appendGroup || ($dig && $dig!='false'))?'':'input-group';
 ?>

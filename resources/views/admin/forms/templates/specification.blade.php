@@ -12,7 +12,7 @@ $wrapper->prepareCrazyInput();
 
 $wrapper->removeClass();
 $wrapper->addClass("crazy-specification");
-$wrapper->id.='-wrapper';
+$wrapper->{MODEL_PRIMARY_KEY}.='-wrapper';
 $wrapper->name.='-wrapper';
 $selectData = [
     "text","number","email","textarea","select","radio", "checkbox", "checklist", "switch", "crazyselect", "crazytag", "options", "touchspin"

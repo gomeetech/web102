@@ -17,7 +17,7 @@ $custom = ($input->parent && $c = $input->parent->get($cf))?$c:(html_input([
 
 $wrapper->removeClass();
 $wrapper->addClass("input-group crazy-slug");
-$wrapper->id.='-wrapper';
+$wrapper->{MODEL_PRIMARY_KEY}.='-wrapper';
 $wrapper->name.='-wrapper';
 ?>
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcribes');
+        Schema::dropIfExists('subscribes');
     }
 };

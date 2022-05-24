@@ -11,7 +11,7 @@ array_unshift($inputs,[
 	'name' => 'id',
 	'id' => 'input-hidden-id',
 	'type' => 'hidden',
-	'value' => $data->id
+	'value' => $data->{MODEL_PRIMARY_KEY}
 ]);
 $args = [
 	'inputs' => $inputs,

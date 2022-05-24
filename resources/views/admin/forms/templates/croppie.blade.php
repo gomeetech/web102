@@ -11,7 +11,7 @@ add_css_link('static/plugins/cropit/cropit.css');
 
 ?>
 
-<div id="{{$input->id}}-editor-wrapper">
+<div id="{{$input->{MODEL_PRIMARY_KEY} }}-editor-wrapper">
     <h3 class="text-center">{{$input->comment?$input->comment:'Hình xem trước'}}</h3>
     <div class="select-file cropit-editor">
         <div class="cropit-preview"></div>
@@ -42,8 +42,8 @@ add_css_link('static/plugins/cropit/cropit.css');
     </div>
 
     <div class="form-group keep-original">
-        <label for="{{$input->id}}-keep-original" class="form-control-label ">
-            <input type="checkbox" name="{{$input->name}}_keep_original" id="{{$input->id}}-keep-original" > Giữ nguyên kích thước
+        <label for="{{$input->{MODEL_PRIMARY_KEY} }}-keep-original" class="form-control-label ">
+            <input type="checkbox" name="{{$input->name}}_keep_original" id="{{$input->{MODEL_PRIMARY_KEY} }}-keep-original" > Giữ nguyên kích thước
         </label>
     </div>
 

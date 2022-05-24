@@ -17,15 +17,15 @@ $select_type = $input->data('select-type');
 if(!$select_type){
     $select_type = 'static';
 }
-$input->data('id', $input->id);
+$input->data('id', $input->{MODEL_PRIMARY_KEY});
 ?>
 
-    <input type="hidden" name="{{$input->name}}" value="{{($def?$def[0]:'')}}" id="{{$input->id}}" class="{{$input->className}} d-none" />
+    <input type="hidden" name="{{$input->name}}" value="{{($def?$def[0]:'')}}" id="{{$input->{MODEL_PRIMARY_KEY} }}" class="{{$input->className}} d-none" />
     <div class="dropdown deep-select-group {{$select_type}}" @if($input->data('changed-callback')) data-changed-callback="{{$input->data('changed-callback')}}" @endif >
-        <button type="button" class="btn btn-secondary dropdown-toggle show-text-value" id="{{$input->id}}-dropdown" value="{{($def?$def[0]:'')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle show-text-value" id="{{$input->{MODEL_PRIMARY_KEY} }}-dropdown" value="{{($def?$def[0]:'')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{($def?$def[1]:"Chưa chọn giá trị")}}
         </button>
-        <div class="dropdown-menu" data-ref="{{$input->id}}" aria-labelledby="{{$input->id}}-dropdown">
+        <div class="dropdown-menu" data-ref="{{$input->{MODEL_PRIMARY_KEY} }}" aria-labelledby="{{$input->{MODEL_PRIMARY_KEY} }}-dropdown">
             <div class="search-block p-2">
                 <input type="search" name="search_options" class="form-control m-input" placeholder="Tìm kiếm..." />
             </div>

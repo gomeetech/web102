@@ -12,7 +12,7 @@ if($val){
     
         {!! $input !!}
         <div class="input-group-append">
-            <button type="button" class="btn btn-info color-picker-btn" data-input-id="{{$input->id}}" data-change-color-selector="#{{$input->id}}" id="button-group-{{$input->id}}"><i class="fa fa-paint-brush"></i></button>
+            <button type="button" class="btn btn-info color-picker-btn" data-input-id="{{$input->{MODEL_PRIMARY_KEY} }}" data-change-color-selector="#{{$input->{MODEL_PRIMARY_KEY} }}" id="button-group-{{$input->{MODEL_PRIMARY_KEY} }}"><i class="fa fa-paint-brush"></i></button>
         </div>
     
 

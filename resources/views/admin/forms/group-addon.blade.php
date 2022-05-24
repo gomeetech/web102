@@ -1,16 +1,16 @@
-<div class="{{$input_group_class}} {{$input->type}} input-{{$input->type}}-group {{$addon_class}}" id="input-{!! $input->id !!}-group">
+<div class="{{$input_group_class}} {{$input->type}} input-{{$input->type}}-group {{$addon_class}}" id="input-{!! $input->{MODEL_PRIMARY_KEY} !!}-group">
     {{-- prepend addon group --}}
     @if ($input->prependGroup)
         @foreach ($input->prependGroup as $addon)
         <?php 
         if($addon->error){
-            set_web_data($input->id. '-error', $addon->error);
+            set_web_data($input->{MODEL_PRIMARY_KEY}. '-error', $addon->error);
         }
         ?>
             <div class="input-group-prepend">
                 @if (in_array($addon->type, $input_addons))
                     @include($_base.'forms.addons.'.$addon->type, ['input'=>$addon])
-                @elseif(is_support_template($addon->template, $addon->type))
+                @elseif(is_support_template($addon->template, $addon->type, $_base.'form.templates.'))
                     @include($_base.'forms.templates.'.$addon->template, ['input'=>$addon])
                 @else
                     {!! $addon !!}
@@ -62,13 +62,13 @@
         @foreach ($input->appendGroup as $addon)
         <?php 
         if($addon->error){
-            set_web_data($input->id. '-error', $addon->error);
+            set_web_data($input->{MODEL_PRIMARY_KEY}. '-error', $addon->error);
         }
         ?>
             <div class="input-group-append">
                 @if (in_array($addon->type, $input_addons))
                     @include($_base.'forms.addons.'.$addon->type, ['input'=>$addon])
-                @elseif(is_support_template($addon->template, $addon->type))
+                @elseif(is_support_template($addon->template, $addon->type, $_base.'form.templates.'))
                     @include($_base.'forms.templates.'.$addon->template, ['input'=>$addon])
                 @else
                     {!! $addon !!}

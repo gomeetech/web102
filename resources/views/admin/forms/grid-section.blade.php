@@ -96,8 +96,8 @@ $input_addons = ['checkbox'];
                     @if ($input->type=='hidden')
                         {!! $input !!}
                     @else
-                        <div class="form-group {{$g_class}} {{$input->error?'has-danger':''}}" id="{{$input->id}}-form-group">
-                            <label class="{{$l_class}}" for="{{$input->id}}" >
+                        <div class="form-group {{$g_class}} {{$input->error?'has-danger':''}}" id="{{$input->{MODEL_PRIMARY_KEY} }}-form-group">
+                            <label class="{{$l_class}}" for="{{$input->{MODEL_PRIMARY_KEY} }}" >
                                 {!!$input->label!!}
                                 @if ($input->required && !in_array($input->required, ["0", "false", "no"]))
                                 <span class="m-badge m-badge--danger m-badge--dot"></span>
@@ -107,7 +107,7 @@ $input_addons = ['checkbox'];
                             <div class="{{$w_class}}">
                 
                                 <?php
-                                    $is_template = is_support_template($input->template, $type);
+                                    $is_template = is_support_template($input->template, $type, $_base.'form.templates.');
                                     $addon_class = '';
                                     if($is_template){
                                         if($input->template == 'touchspin') $addon_class.= 'bootstrap-touchspin ';
@@ -118,14 +118,14 @@ $input_addons = ['checkbox'];
                                 ?>
                                 
                 
-                                <div class="{{$input_group_class}} {{$input->type}} input-{{$input->type}}-group {{$addon_class}}" id="input-{!! $input->id !!}-group">
+                                <div class="{{$input_group_class}} {{$input->type}} input-{{$input->type}}-group {{$addon_class}}" id="input-{!! $input->{MODEL_PRIMARY_KEY} !!}-group">
                                     {{-- prepend addon group --}}
                                     @if ($input->prependGroup)
                                         @foreach ($input->prependGroup as $addon)
                                             <div class="input-group-prepend">
                                                 @if (in_array($addon->type, $input_addons))
                                                     @include($_base.'forms.addons.'.$addon->type, ['input'=>$addon])
-                                                @elseif(is_support_template($addon->template, $addon->type))
+                                                @elseif(is_support_template($addon->template, $addon->type, $_base.'form.templates.'))
                                                     @include($_base.'forms.templates.'.$addon->template, ['input'=>$addon])
                                                 @else
                                                     {!! $addon !!}
@@ -147,7 +147,7 @@ $input_addons = ['checkbox'];
                                         <div class="custom-file">
                                             <?php $input->addClass('custom-file-input'); ?>
                                             {!! $input !!}
-                                            <label class="custom-file-label selected" for="{{$input->id}}">{{$input->val()?$input->val():'Chưa có file nào dc chọn'}}</label>
+                                            <label class="custom-file-label selected" for="{{$input->{MODEL_PRIMARY_KEY} }}">{{$input->val()?$input->val():'Chưa có file nào dc chọn'}}</label>
                                         </div>
                                     
                                     @elseif(in_array($type, ['checkbox', 'radio', 'checklist']))
@@ -170,7 +170,7 @@ $input_addons = ['checkbox'];
                                             <div class="input-group-append">
                                                 @if (in_array($addon->type, $input_addons))
                                                     @include($_base.'forms.addons.'.$addon->type, ['input'=>$addon])
-                                                @elseif(is_support_template($addon->template, $addon->type))
+                                                @elseif(is_support_template($addon->template, $addon->type, $_base.'form.templates.'))
                                                     @include($_base.'forms.templates.'.$addon->template, ['input'=>$addon])
                                                 @else
                                                     {!! $addon !!}
@@ -180,7 +180,7 @@ $input_addons = ['checkbox'];
                                     @endif
                                     
                                 </div>
-                                <div class="form-control-feedback input-message-alert" id="input-{!! $input->id !!}-message-alert">{{$input->error}}</div>    
+                                <div class="form-control-feedback input-message-alert" id="input-{!! $input->{MODEL_PRIMARY_KEY} !!}-message-alert">{{$input->error}}</div>    
                                 
                                 
                             </div>

@@ -13,7 +13,7 @@ $errorMessage = $errors->first($namespace);
         </div>
     </div>
     <div class="col-sm-6 col-md-8 col-lg-9 col-xl-10">
-        <input type="hidden" name="{{$name}}[{{$index}}][product_id]" value="{{$product->id}}">
+        <input type="hidden" name="{{$name}}[{{$index}}][product_id]" value="{{$product->{MODEL_PRIMARY_KEY} }}">
         <input type="hidden" name="{{$name}}[{{$index}}][id]" value="">
         <h2 class="{{$hasError?'text-danger':''}}">{{$product->name}}</h2>
         <div class="price">
@@ -36,14 +36,14 @@ $errorMessage = $errors->first($namespace);
                     <?php 
                     $key = $loop->index;
                     $input = html_input($attr); 
-                    $is_template = is_support_template($input->template, $input->type);
+                    $is_template = is_support_template($input->template, $input->type, $_base.'form.templates.');
                     $input->name = $name. "[$index][attr_values][$input->name]";
-                    $input->id = $name. "-$index-attr_values-$input->name";
+                    $input->{MODEL_PRIMARY_KEY} = $name. "-$index-attr_values-$input->name";
 
                     ?>
                     
                     <div class="form-group row">
-                        <label for="{{$input->id}}" class="col-12 col-sm-4 col-md-3 col-lg-2 col-form-label">{{$input->label}}</label>
+                        <label for="{{$input->{MODEL_PRIMARY_KEY} }}" class="col-12 col-sm-4 col-md-3 col-lg-2 col-form-label">{{$input->label}}</label>
                         <div class="col-12 col-sm-8 col-md-9 col-lg-10">
                             @if ($is_template)
                                 @include($_base.'forms.templates.'.$input->template)

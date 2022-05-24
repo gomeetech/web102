@@ -44,7 +44,7 @@ if($errors->first()){
 }
 
 ?>
-<div class="affiliate-input affiliate" id="affiliate-{{$input->id}}" data-max-index="{{$maxIndex}}" data-next-index="{{$maxIndex}}">
+<div class="affiliate-input affiliate" id="affiliate-{{$input->{MODEL_PRIMARY_KEY} }}" data-max-index="{{$maxIndex}}" data-next-index="{{$maxIndex}}">
     <div class="affiliate-list">
         @if ($affiliates && is_array($affiliates))
             @foreach ($affiliates as $index => $item)
@@ -56,7 +56,7 @@ if($errors->first()){
                 
             @endphp
             <div id="affiliate-item-{{$loop->index}}" class="affiliate-item" data-index="{{$loop->index}}">
-                <input type="hidden" name="{{$pname.'[id]'}}" value="{{$data->id}}">
+                <input type="hidden" name="{{$pname.'[id]'}}" value="{{$data->{MODEL_PRIMARY_KEY} }}">
                 <div class="row">
                     <div class="col-12 col-sm-6 mb-3 {{($error = $errors->first($nsp.'affiliate_id'))?'has-danger':''}}">
                         <label for="{{$pid.'affiliate_id'}}">Trang Affiliate</label>

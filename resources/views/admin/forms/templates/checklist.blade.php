@@ -19,7 +19,7 @@ $wrapper->removeClass()->addClass("m-checkbox-{$listType}");
 $wrapper->name = null;
 $wrapper->type = null;
 $wrapper->placehoder = null;
-$wrapper->id = $wrapper->id. '-wrapper';
+$wrapper->{MODEL_PRIMARY_KEY} = $wrapper->{MODEL_PRIMARY_KEY}. '-wrapper';
 
 
 ?>
@@ -34,7 +34,7 @@ $wrapper->id = $wrapper->id. '-wrapper';
         @foreach ($options as $value => $text)
 
         <label class="m-checkbox m-checkbox--solid m-checkbox--info">
-            <input type="checkbox" class="crazy-checkbox" name="{{$input->name}}" id="{{$input->id.'-'.str_slug($value)}}" value="{{$value}}" @if(in_array($value, $disable)) disabled="true" @endif @if(in_array($value, $defaultValues)) checked @endif> 
+            <input type="checkbox" class="crazy-checkbox" name="{{$input->name}}" id="{{$input->{MODEL_PRIMARY_KEY}.'-'.str_slug($value)}}" value="{{$value}}" @if(in_array($value, $disable)) disabled="true" @endif @if(in_array($value, $defaultValues)) checked @endif> 
             {{$text}}
             <span></span>
         </label>

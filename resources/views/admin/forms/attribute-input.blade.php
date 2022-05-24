@@ -8,7 +8,7 @@ $is_variant = $input->hidden('is-variant');
 $rname = $is_variant?'variants':$root_name;
 
 $price_type = $input->hidden('price-type');
-$input->id = $rname.'-'.$input->name.'-'.$attr_id;
+$input->{MODEL_PRIMARY_KEY} = $rname.'-'.$input->name.'-'.$attr_id;
 
 $input->name = $rname.'['.$attr_name.']';
 $ns = $input->nameToNamespace();
@@ -40,8 +40,8 @@ if($input->type=='number'){
 
 ?>
 
-<div class="mt-1 mb-4 crazy-form-group row scope-{{$input->hiddenData('scope')}} {{$input->error?'has-danger':''}}" id="{{$input->id}}-form-group">
-    <label class="{{$lbl_class}} col-form-label" for="{{$input->id}}" >
+<div class="mt-1 mb-4 crazy-form-group row scope-{{$input->hiddenData('scope')}} {{$input->error?'has-danger':''}}" id="{{$input->{MODEL_PRIMARY_KEY} }}-form-group">
+    <label class="{{$lbl_class}} col-form-label" for="{{$input->{MODEL_PRIMARY_KEY} }}" >
         {{$input->label}}
         @if ($input->required && !in_array($input->required, ["0", "false"]))
             <span class="m-badge m-badge--danger m-badge--dot"></span>
@@ -51,7 +51,7 @@ if($input->type=='number'){
     <div class="{{$col_class}}">
 
         <?php
-            $is_template = is_support_template($input->template, $input->type);
+            $is_template = is_support_template($input->template, $input->type, $_base.'form.templates.');
 
             $dig = $input->data('input-group');
             $input_group_class = ($input->prepend_text || $input->append_text || ($dig && $dig!='false') || $input->type == 'select')?'input-group':'';
@@ -60,7 +60,7 @@ if($input->type=='number'){
         ?>
 
 
-        <div class="{{$input_group_class}}" id="attr-input-{!! $input->id !!}-group">
+        <div class="{{$input_group_class}}" id="attr-input-{!! $input->{MODEL_PRIMARY_KEY} !!}-group">
             {{-- nru61 thuộc tính là variant --}}
             @if ($is_variant)
                 <div id="product-variant-input-{{$input->hidden('id')}}" class="product-variant-input">
@@ -103,7 +103,7 @@ if($input->type=='number'){
                                     data-value="{{$value}}"
                                     data-attribute="{{$attr_id}}"
                                     name="{{$name}}"
-                                    id="{{$input->id.'-'.str_slug($value)}}"
+                                    id="{{$input->{MODEL_PRIMARY_KEY}.'-'.str_slug($value)}}"
                                     value="{{$value}}"
                                     data-on-change="Product.form.onVariantChange"
                                     data-e="0"
@@ -201,7 +201,7 @@ if($input->type=='number'){
                     <div class="custom-file">
                         <?php $input->addClass('custom-file-input'); ?>
                         {!! $input !!}
-                        <label class="custom-file-label selected" for="{{$input->id}}">{{$input->val()?$input->val():'Chưa có file nào dc chọn'}}</label>
+                        <label class="custom-file-label selected" for="{{$input->{MODEL_PRIMARY_KEY} }}">{{$input->val()?$input->val():'Chưa có file nào dc chọn'}}</label>
                     </div>
 
                 @elseif(in_array($input->type, ['checkbox', 'radio', 'checklist']))
@@ -233,7 +233,7 @@ if($input->type=='number'){
 
 
         </div>
-        <div class="form-control-feedback input-message-alert" id="input-{!! $input->id !!}-message-alert">{{$input->error}}</div>
+        <div class="form-control-feedback input-message-alert" id="input-{!! $input->{MODEL_PRIMARY_KEY} !!}-message-alert">{{$input->error}}</div>
 
 
     </div>

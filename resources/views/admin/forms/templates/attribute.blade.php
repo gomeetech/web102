@@ -17,7 +17,7 @@ $attributeGroupLabels = [
 $wrp = $wrapper->copy();
 $wrp->removeClass()->addClass("product-attributes");
 $wrp->name = null;
-$wrp->id = 'product-attributes';
+$wrp->{MODEL_PRIMARY_KEY} = 'product-attributes';
 $wrp->type = null;
 $wrp->placeholder = null;
 
